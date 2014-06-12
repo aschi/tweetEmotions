@@ -1,0 +1,403 @@
+%%% File-Information {{{
+%%% Filename: template_bericht.tex
+%%% Purpose: lab report, technical report, project report
+%%% Time-stamp: <2004-06-22 23:36:32 xx>
+%%% Authors: The LaTeX@TUG-Team [http://latex.tugraz.at/]:
+%%%          Karl Voit (vk), Michael Prokop (mp), Stefan Sollerer (ss)
+%%% History:
+%%%   20040625 (vk,ss) initial version
+%%%
+%%% Notes:
+%%%
+%%%
+%%%
+%%% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% main document {{{
+
+\documentclass[
+a4paper,     %% defines the paper size: a4paper (default), a5paper, letterpaper, ...
+% landscape,   %% sets the orientation to landscape
+% twoside,     %% changes to a two-page-layout (alternatively: oneside)
+% twocolumn,   %% changes to a two-column-layout
+ headsepline, %% add a horizontal line below the column title
+% footsepline, %% add a horizontal line above the page footer
+% titlepage,   %% only the titlepage (using titlepage-environment) appears on the first page (alternatively: notitlepage)
+ parskip=half,
+% halfparskip,     %% insert an empty line between two paragraphs (alternatively: halfparskip, ...)
+% leqno,       %% equation numbers left (instead of right)
+ fleqn,       %% equation left-justified (instead of centered)
+% tablecaptionabove, %% captions of tables are above the tables (alternatively: tablecaptionbelow)
+% draft,       %% produce only a draft version (mark lines that need manual edition and don't show graphics)
+% 10pt         %% set default font size to 10 point
+% 11pt         %% set default font size to 11 point
+12pt         %% set default font size to 12 point
+]{scrartcl}  %% article, see KOMA documentation (scrguide.dvi)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% packages
+%%%
+
+%%%
+%%% encoding and language set
+%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman} % which should have the same result as \usepackage[ngerman]{babel}
+\usepackage{float}
+%%%
+%%% technical packages
+%%%
+
+%%% amsmath, amssymb, amstext: support for mathematics
+\usepackage{amsmath,amssymb,amstext}
+
+%%% psfrag: replace PostScript fonts
+%\usepackage{psfrag}
+
+
+%%% units: technical units
+\usepackage{units}
+
+%% listings: sourcecode
+\usepackage{listings}
+
+%% colors
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+%%%
+%%% layout
+%%%
+
+%%% scrpage2: KOMA heading and footer
+%%% Note: if you don't use this package, please remove 
+%%%       \pagestyle{scrheadings} and corresponding settings
+%%%       below too.
+\usepackage{scrpage2}
+
+%%%
+%%% PDF
+%%%
+
+%%%\newif\ifpdf
+%%%  \ifx\pdfoutput\undefined
+%%%     \pdffalse
+%%%  \else
+%%%     \pdfoutput=1
+%%%     \pdftrue
+%%%  \fi
+
+%%% Should be LAST usepackage-call!
+%%% For docu on that, see reference on package ``hyperref''
+\ifpdfoutput{%   (definitions for using pdflatex instead of latex)
+
+  %%% graphicx: support for graphics
+  \usepackage[pdftex]{graphicx}
+
+  \pdfcompresslevel=9
+
+  %%% hyperref (hyperlinks in PDF): for more options or more detailed
+  %%%          explanations, see the documentation of the hyperref-package
+  \usepackage[%
+    %%% general options
+    pdftex=true,      %% sets up hyperref for use with the pdftex program
+    %plainpages=false, %% set it to false, if pdflatex complains: ``destination with same identifier already exists''
+    %
+    %%% extension options
+    backref=true,      %% if true, adds a backlink text to the end of each item in the bibliography
+    pagebackref=false, %% if true, creates backward references as a list of page numbers in the bibliography
+    colorlinks=false,   %% turn on colored links (true is better for on-screen reading, false is better for printout versions)
+    %
+    %%% PDF-specific display options
+    bookmarks=true,          %% if true, generate PDF bookmarks (requires two passes of pdflatex)
+    bookmarksopen=false,     %% if true, show all PDF bookmarks expanded
+    bookmarksnumbered=false, %% if true, add the section numbers to the bookmarks
+    %pdfstartpage={1},        %% determines, on which page the PDF file is opened
+    pdfpagemode=None         %% None, UseOutlines (=show bookmarks), UseThumbs (show thumbnails), FullScreen
+  ]{hyperref}
+
+
+  %%% provide all graphics (also) in this format, so you don't have
+  %%% to add the file extensions to the \includegraphics-command
+  %%% and/or you don't have to distinguish between generating
+  %%% dvi/ps (through latex) and pdf (through pdflatex)
+}{%else   (definitions for using latex instead of pdflatex)
+  \usepackage[dvips]{graphicx}
+
+  \usepackage[%
+    dvips,           %% sets up hyperref for use with the dvips driver
+    colorlinks=false %% better for printout version; almost every hyperref-extension is eliminated by using dvips
+  ]{hyperref}
+
+}
+
+
+%%% sets the PDF-Informations options
+%%% (see fields in Acrobat Reader: ``File -> Document properties -> Summary'')
+%%% Note: this method is better than as options of the hyperref-package (options are expanded correctly)
+\hypersetup{
+  pdftitle={Routentracker für Schweizmobil}, %%
+  pdfauthor={Schmid}, %%
+  pdfsubject={}, %%
+  pdfcreator={Accomplished with LaTeX2e and pdfLaTeX with hyperref-package.}, %% 
+  pdfproducer={}, %%
+  pdfkeywords={} %%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% user defined commands
+%%%
+
+%%% \mygraphics{}{}{}
+%% usage:   \mygraphics{width}{filename_without_extension}{caption}
+%% example: \mygraphics{0.7\textwidth}{rolling_grandma}{This is my grandmother on inlinescates}
+%% requires: package graphicx
+%% provides: including centered pictures/graphics with a boldfaced caption below
+%% 
+\newcommand{\mygraphics}[3]{
+  \begin{center}
+    \includegraphics[width=#1, keepaspectratio=true]{#2} \\
+    \textbf{#3}
+  \end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Glossar
+\usepackage{glossaries}
+
+\makeglossaries
+
+\newglossaryentry{population}
+{
+  name=Population,
+  description={ist die Menge aller Individuen in einem evolutionären Algorithmus}
+}
+\newglossaryentry{individuum}
+{
+  name=Individuum,
+  description={ist Teil der Population. Entspricht in unserem Falle einem endlichen Automaten oder einem endlichen Automaten mit Problemmenge}
+}
+\newglossaryentry{loesungskandidat}
+{
+  name=Lösungskandidat,
+  description={wird als Synonym für Individuum verwendet}
+}
+\newglossaryentry{deepcopy}
+{
+  name={Deep Copy},
+  description={Eine Kopie eines Objektes bei welchem auch alle enthaltenen Objekte kopiert wurden}
+}
+\newglossaryentry{c_g_alg}
+{
+  name={GK Algorithmus},
+  description={Ein evolutionärer Algorithmus mit einer globalen, konstanten Problemmenge}
+}
+\newglossaryentry{e_g_alg}
+{
+  name={GM Algorithmus},
+  description={Ein evolutionärer Algorithmus mit einer globalen, mutierenden Problemmenge}
+}
+\newglossaryentry{e_l_alg}
+{
+  name={LM Algorithmus},
+  description={Ein evolutionärer Algorithmus mit lokalen, mutierenden Problemmengen}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% define the titlepage
+%%%
+
+ \subject{Seminararbeit}   %% subject which appears above titlehead
+% \titlehead{} %% special heading for the titlepage
+
+%%% title
+\title{Routentracker für Schweizmobil}
+
+%%% author(s)
+\author{Adrian Schmid}
+\author{\texorpdfstring{Adrian Schmid - \href{mailto:schmiad1@students.zhaw.ch}{schmiad1@students.zhaw.ch}}{Adrian Schmid}}
+
+%%% date
+\date{Zürich, 04.06.2014}
+
+% \publishers{}
+
+% \thanks{} %% use it instead of footnotes (only on titlepage)
+
+% \dedication{} %% generates a dedication-page after titlepage
+
+
+%%% uncomment following lines, if you want to:
+%%% reuse the maketitle-entries for hyperref-setup
+%\newcommand\org@maketitle{}
+%\let\org@maketitle\maketitle
+%\def\maketitle{%
+%  \hypersetup{
+%    pdftitle={\@title},
+%    pdfauthor={\@author}
+%    pdfsubject={\@subject}
+%  }%
+%  \org@maketitle
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% set heading and footer
+%%%
+
+%%% scrheadings default: 
+%%%      footer - middle: page number
+\pagestyle{scrheadings}
+
+%%% user specific
+%%% usage:
+%%% \position[heading/footer for the titlepage]{heading/footer for the rest of the document}
+
+%%% heading - left
+% \ihead[]{}
+
+%%% heading - center
+% \chead[]{}
+
+%%% heading - right
+ \ohead[]{Routentracker für Schweizmobil}
+
+%%% footer - left
+% \ifoot[]{}
+
+%%% footer - center
+% \cfoot[]{}
+
+%%% footer - right
+% \ofoot[]{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% begin document
+%%%
+
+\setcounter{tocdepth}{2}
+
+
+\begin{document}
+
+  \lstset{ %
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=single,                    % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=Octave,                 % the language of the code
+    morekeywords={*,...},            % if you want to add more keywords to the set
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=2,                       % sets default tabsize to 2 spaces
+  }
+
+
+
+ \pagenumbering{roman} %% small roman page numbers
+
+%%% include the title
+% \thispagestyle{empty}  %% no header/footer (only) on this page
+ \maketitle
+
+%\input{content/00_preface/abstract.tex}
+
+\clearpage
+%%% start a new page and display the table of contents
+% \newpage
+\tableofcontents
+%%% display the main document on a new page 
+% \newpage
+
+ \pagenumbering{arabic} %% normal page numbers (include it, if roman was used above)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% begin main document
+%%% structure: \section \subsection \subsubsection \paragraph \subparagraph
+%%%
+
+\clearpage
+\input{content/01_einleitung/einleitung.tex}
+\input{content/02_grundlagen/grundlagen.tex}
+\input{content/03_umsetzung/umsetzung.tex}
+\input{content/04_analyse/analyse.tex}
+\input{content/05_auswertung/auswertung.tex}
+
+\clearpage
+
+%%%
+%%% end main document
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \appendix  %% include it, if something (bibliography, index, ...) follows below
+\begin{appendix}
+%\input{content/99_anhang/anhang.tex}
+\printglossary[title=Glossar]
+%%% start a new page and display the list of figures
+% \newpage
+ \listoffigures
+
+%%% start a new page and display the list of tables
+% \newpage
+ \listoftables
+
+\lstlistoflistings
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% bibliography
+%%%
+%%% available styles: abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt
+%%%
+ \bibliographystyle{plain}
+
+%%% name of the bibliography file
+ \bibliography{projekt.bib}
+
+\end{appendix}
+\end{document}
+%%% }}}
+%%% END OF FILE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Local Variables:
+%% mode: outline-minor
+%% OPToutline-regexp: "%% .*"
+%% OPTeval: (hide-body)
+%% emerge-set-combine-versions-template: "%a\n%b\n"
+%% End:
+%% vim:foldmethod=marker

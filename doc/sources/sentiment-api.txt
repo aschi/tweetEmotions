@@ -1,0 +1,1 @@
+http://text-processing.com/docs/sentiment.html
