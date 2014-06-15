@@ -103,8 +103,6 @@ if tweetList != None and sasaInstance != None and senticNetInstance != None and 
 
 	resultList = COMM.gather(resultList, root=0)
 
-	COMM.Barrier()
-
 	if RANK == 0:
 		log.log("analyzing finished... [" + str((time.time()-lapTime)) +"s]")
 		lapTime = time.time()

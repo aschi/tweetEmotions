@@ -26,4 +26,4 @@ if(inputVar == "yes" or inputVar == "y" or inputVar == "j" or inputVar == "ja"):
 	f.write(filename + "#-#-#-#" + title)
 	f.close()
 
-	os.system("mpiexec -n 1 python analyse_twitterdata.py")
+	os.system("mpiexec -n 2 python analyse_twitterdata.py")
