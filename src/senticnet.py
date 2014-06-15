@@ -1,8 +1,11 @@
+#!/usr/local/bin/python
+# coding: utf8
+
 import xml.etree.ElementTree as ET
 import re
 
 class SenticScore:
-	def __init__(self, pleasantness, attention, sensitivity, aptitudem, polarity):
+	def __init__(self, pleasantness, attention, sensitivity, aptitude, polarity):
 		self.pleasantness = pleasantness
 		self.attention = attention
 		self.sensitivity = sensitivity
@@ -24,11 +27,26 @@ class SenticNet:
 		tweet = tweet.lower()
 		words = tweet.split(" ")
 		wordcombos = self.getWordCombinations(words, " ")
-		total = SenticScore(0.0, 0.0, 0.0, 0.0)
-
+		total = SenticScore(0.0, 0.0, 0.0, 0.0, 0.0)
+		count = 0
 		for w in wordcombos:
-			total.add(self.getWordSenticScore(w))
-		return total
+			obj = self.getWordSenticScore(w)
+			if obj != None:
+				total.add(obj)
+				count = count + 1
+		
+		if count > 0:
+			#get average
+			average = SenticScore(
+				total.pleasantness / count,
+				total.attention / count,
+				total.sensitivity / count,
+				total.aptitude / count,
+				total.polarity / count
+			)
+			return average
+		else:
+			return None
 
 	def getWordCombinations(self, wordList, seperator):
 		comboList = []
@@ -48,7 +66,7 @@ class SenticNet:
 		if word in self.dictionary:
 			return self.dictionary[word]
 		else:
-			return SenticScore(0.0, 0.0, 0.0, 0.0)
+			return None
 
 
 	def __init__(self, pathToSN):

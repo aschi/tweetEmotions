@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# coding: utf8
+
 import os
 import re
 
@@ -9,16 +12,26 @@ class SentiWordNet:
 		words = tweet.split(" ")
 		wordcombos = self.getWordCombinations(words, "_")
 		total = 0.0
-		for w in words:
-			total = total + self.getWordScore(w)
-		return total
+		count = 0
+		for w in wordcombos:
+			ret = self.getWordScore(w)
+			if(ret != None):
+				total = total + ret
+				count = count + 1
+
+		if(count > 0):
+			#calculate average
+			average = total/count
+			return average
+		else:
+			return None
 
 
 	def getWordScore(self, word):
 		if word in self.dictionary:
 			return self.dictionary[word]
 		else:
-			return 0
+			return None
 
 	def getWordCombinations(self, wordList, seperator):
 		comboList = []

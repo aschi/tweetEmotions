@@ -1,3 +1,6 @@
+#!/usr/local/bin/python
+# coding: utf8
+
 from sasa.classifier import Classifier
 
 class SasaTweets:
