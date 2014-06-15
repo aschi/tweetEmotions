@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 1
+Opening config file: config/config.txt
+Config read (title: sepp blatter; filename: data/sepp_blatter_fifa_raw_search_1402760802.9.txt) [0.000171899795532s]
+Opening twitter logfile: data/sepp_blatter_fifa_raw_search_1402760802.9.txt
+twitter log file read (14667 tweets) [0.0128481388092s]
+initializing classifiers...
+classifiers initialised... [13.5250520706s]
+analyzing data...
+analyzing finished... [24.3849020004s]
+combining & refining results...
+emoticonTotal: positive: 16, negative: 38, neutral: 8, unsure: 14605
+sasaTotal: positive: 3834, negative: 1603, neutral: 7209, unsure: 2021
+sasaAvg: 0.104942296703
+senticnetTotal: positive: 12133, negative: 2111, neutral: 72, unsure: 351
+senticnetAverage: pleasantness: 0.00541126594212, attention:0.119510211474, sensitivity:-0.0487549543202, aptitude: 0.110459320701, polarity: 0.0557022931669
+nltkTotal: positive: 11700, negative: 2967, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 6298, negative: 7528, neutral: 841, unsure: 0
+sentiWordNetAverage: -0.00572704028238
+done [3.44733905792s]
+total time used: 41.5428009033s

@@ -1,38 +1,55 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{georef}
-ArcGIS 9.2.
-\newblock Georeferencing and coordinate systems.
+\bibitem{emoticons1}
+Emoticons - show your friends how you really feel.
+\newblock \url{https://messenger.yahoo.com/features/emoticons}.
+
+\bibitem{emoticons3}
+List of text emoticons – the ultimate resource.
+\newblock \url{http://cool-smileys.com/text-emoticons}.
+
+\bibitem{liwcfaq}
+The liwc2007 application.
+\newblock \url{http://www.liwc.net/howliwcworks.php}.
+
+\bibitem{sentistrength}
+Sentistrength - java version.
+\newblock \url{http://sentistrength.wlv.ac.uk/#Java}.
+
+\bibitem{emoticons2}
+What is the full list of emoticons?
 \newblock
-  \url{http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Georeferencing_and_coordinate_systems}.
+  \url{https://support.skype.com/en/faq/FA12330/what-is-the-full-list-of-emoticons}.
 
-\bibitem{leicagps}
-Leica~Geosystems AG.
-\newblock {\em Einführung in die GPS Vermessung (Global Positioning System)}.
+\bibitem{senticnet}
+Erik Cambria, Catherine Havasi, and Amir Hussain.
+\newblock Senticnet 2: A semantic and affective resource for opinion mining and
+  sentiment analysis.
+\newblock 2012.
 
-\bibitem{gpxwiki}
-Wikimedia Foundation.
-\newblock Gps exchange format.
-\newblock \url{http://en.wikipedia.org/wiki/GPS_Exchange_Format}.
+\bibitem{nltk}
+Dan Garrette, Peter Ljunglöf, Joel Nothman, Mikhail Korobov, Morten~Minde
+  Neergaard, and Steven Bird.
+\newblock Natural language toolkit.
+\newblock \url{http://www.nltk.org/}.
 
-\bibitem{wsg84}
-Wikimedia Foundation.
-\newblock World geodetic system 1984.
-\newblock \url{http://en.wikipedia.org/wiki/World_Geodetic_System_1984}.
+\bibitem{comparing}
+Pollyanna Goncalves, Fabricio Benevenuto, Matheus Araujo, and Meeyoung Cha.
+\newblock Comparing and combining sentiment analysis methods.
+\newblock {\em Proceedings of the first ACM conference on Online social
+  networks}.
 
-\bibitem{geodesy}
-Penstate~College of~Earth and Mineral Sciences.
-\newblock Geodesy, datums, and coordinate systems.
-\newblock \url{https://www.e-education.psu.edu/lidar/l3_p3.html}.
+\bibitem{thumbs_up}
+B~Pang, L~Lee, and S~Vaithyanathan.
+\newblock Thumbs up? sentiment classification using machine learning
+  techniques.
+\newblock {\em ACL Conference on Empirical Methods in Natural Language
+  Processing}.
 
-\bibitem{haversine}
-R.~W. Sinnott.
-\newblock {Virtues of the Haversine}.
-\newblock {\em Sky and Telescope}, 68(2):159+, 1984.
-
-\bibitem{gpx}
-Topografix.
-\newblock Gpx 1.1 schema documentation.
-\newblock \url{http://www.topografix.com/GPX/1/1/}.
+\bibitem{nltkbayes}
+Jacob Perkins.
+\newblock Text classification for sentiment analysis - naive bayes classifier.
+\newblock
+  \url{http://streamhacker.com/2010/05/10/text-classification-sentiment-analysis-naive-bayes-classifier/}.
 
 \end{thebibliography}

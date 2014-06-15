@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 1
+Opening config file: config/config.txt
+Config read (title: Russland Krim; filename: data/russia_crimea_raw_search_1402760597.15.txt) [0.000166893005371s]
+Opening twitter logfile: data/russia_crimea_raw_search_1402760597.15.txt
+twitter log file read (2860 tweets) [0.00165200233459s]
+initializing classifiers...
+classifiers initialised... [13.5924708843s]
+analyzing data...
+analyzing finished... [4.71101498604s]
+combining & refining results...
+emoticonTotal: positive: 14, negative: 2, neutral: 2, unsure: 2842
+sasaTotal: positive: 648, negative: 89, neutral: 1767, unsure: 356
+sasaAvg: 0.127414203166
+senticnetTotal: positive: 2164, negative: 584, neutral: 13, unsure: 99
+senticnetAverage: pleasantness: -0.00559275397225, attention:0.107491502848, sensitivity:-0.0657504645964, aptitude: 0.11692671187, polarity: 0.058392281172
+nltkTotal: positive: 2798, negative: 62, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 1288, negative: 1321, neutral: 251, unsure: 0
+sentiWordNetAverage: -0.00511776180647
+done [3.25611996651s]
+total time used: 21.7182250023s

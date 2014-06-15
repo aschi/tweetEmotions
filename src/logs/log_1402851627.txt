@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 4
+Opening config file: config/config.txt
+Config read (title: Elliot Rodger; filename: data/elliot_rodger_raw_search_1402761842.38.txt) [0.000169992446899s]
+Opening twitter logfile: data/elliot_rodger_raw_search_1402761842.38.txt
+twitter log file read (3396 tweets) [0.0153861045837s]
+initializing classifiers...
+classifiers initialised... [55.826996088s]
+analyzing data...
+analyzing finished... [5.6392159462s]
+combining & refining results...
+emoticonTotal: positive: 2, negative: 40, neutral: 5, unsure: 3349
+sasaTotal: positive: 1145, negative: 234, neutral: 1492, unsure: 525
+sasaAvg: 0.185033905798
+senticnetTotal: positive: 2889, negative: 383, neutral: 18, unsure: 106
+senticnetAverage: pleasantness: 0.0319800458656, attention:0.10661256214, sensitivity:-0.0512429419027, aptitude: 0.126204958498, polarity: 0.0671435555134
+nltkTotal: positive: 3213, negative: 183, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 1987, negative: 1163, neutral: 239, unsure: 7
+sentiWordNetAverage: 0.00311383549622
+done [15.733342886s]
+total time used: 77.9656841755s

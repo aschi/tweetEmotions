@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 1
+Opening config file: config/config.txt
+Config read (title: Worldcup Brazil; filename: data/worldcup_brazil_raw_search_1402793686.62.txt) [0.00016188621521s]
+Opening twitter logfile: data/worldcup_brazil_raw_search_1402793686.62.txt
+twitter log file read (17974 tweets) [0.0150082111359s]
+initializing classifiers...
+classifiers initialised... [15.0013101101s]
+analyzing data...
+analyzing finished... [26.8025729656s]
+combining & refining results...
+emoticonTotal: positive: 236, negative: 79, neutral: 87, unsure: 17572
+sasaTotal: positive: 7170, negative: 723, neutral: 7272, unsure: 2809
+sasaAvg: 0.227130324408
+senticnetTotal: positive: 13118, negative: 1367, neutral: 26, unsure: 3463
+senticnetAverage: pleasantness: 0.0539061782928, attention:0.116566874002, sensitivity:-0.0371472691324, aptitude: 0.138394505642, polarity: 0.0922058937113
+nltkTotal: positive: 9005, negative: 8969, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 9379, negative: 4535, neutral: 4058, unsure: 2
+sentiWordNetAverage: 0.00876141695311
+done [3.45459794998s]
+total time used: 45.4651799202s

@@ -3,7 +3,7 @@
 
 from sasa.classifier import Classifier
 
-class SasaTweets:
+class SasaTweetClassifier:
 	def classifyTweet(self, tweet):
 		return self.c.classifyFromText(tweet)
 

@@ -1,26 +1,42 @@
 \section{Einleitung}
-\subsection{Ausgangslage}
-Als begeisterter Velofahrer habe ich vor einiger Zeit die Tools (Website \& Smartphone App) der Stiftung Schweizmobil für mich entdeckt. Diese Platform bietet den Benutzern offizielle Swisstopo Karten auf welchen alle offiziellen Velo-, Mountainbike-, Wander-, Inlineskate- und Kanurouten eingeblendet werden können. Zusätzlich kann man als registrierter Benutzer auf der Website eigene Routen zeichnen. So gezeichnete Routen können ausgedruckt, geteilt oder auf die Schweizmobil App übertragen werden. Was die Tools nicht bieten ist eine \flqq Where have I been\frqq-Tracker Funktion um gefahrene Routen direkt aufzuzeichnen.
+\subsection{Thema, Motivation und Ziel der Arbeit}
+Als Basis für viele soziale Netzwerkdatenanalysen ist es wichtig erkennen zu können welche Gefühle mit bestimmten Textfragmenten verknüpft werden.
+Es gibt verschiedene Ansätze und Algorithmen um dies zu erreichen. Im Rahmen dieser Seminararbeit möchte ich mich mit verschiedenen Algorithmen 
+und Ansätzen zum Erkennen einer negativen oder positiven Grundhaltung beziehungsweise Grundstimmung in kurzen Textfragmenten festzustellen 
+auseinandersetzen.
 
-Ich habe die Stiftung Schweizmobil bezüglich des geplanten Projekts und einer Schnittstelle zum automatischen Übermitteln von GPS Daten angefragt. Aktuell gibt es die Möglichkeit Tracks aus Files im GPX Format als Routen zu importieren. Schweizmobil habe bei der Implementierung seiner App einen \flqq Where have I been\frqq-Tracker angedacht jedoch aufgrund Zweifel bezüglich Genauigkeit und Batterielebensdauer wieder verworfen. Sie seien an den Ergebnissen meiner potentiellen Arbeit interessiert.
+Ziel der Arbeit ist es zuerst verschiedene Verfahren zu untersuchen und kennenzulernen um danach entscheiden zu können welche Verfahren im 
+Rahmen dieser Arbeit implementiert werden könnten. Schlussendlich sollen die umsetzbaren Verfahren implementiert werden.
 
-\subsection{Ziele der Arbeit}
-Im dieser Arbeit geht es in einem ersten Schritt um das erstellen eines sehr technischen \flqq Where have I been\frqq-Trackers welcher unter anderem einen Export von gefahrenen Routen ins GPX Format beherrscht. Mit diesem Tracker werden dann in einem zweiten Schritt Experimente durchgeführt um eine möglichst hohe Genauigkeit bei möglichst geringem Akkuverbrauch zu erreichen.
+Die Implementation soll dabei folgende Funktionalität aufweisen:
+\begin{enumerate}
+\item In einem ersten Schritt wird ein Thema erfasst. Ein Thema beinhaltet einen „Titel“, „Stichwörter“ und einem Zeitrahmen. Nach diesen Attributen sollten Tweets auf Twitter gefunden werden können.
+\item Das Programm soll mit diesen Daten relevante Tweets herauslesen.
+\item Nun sollen Parallel verschieden Algorithmen angestossen werden welche entscheiden ob die definierten Tweets eher positiv oder eher negativ sind.
+\item Dem Benutzer wird ausgegeben welche Algorithmen wieviele Tweets aus der zuvor zusammengestellten Menge „positiv“ oder „negativ“ bewerten.
+\end{enumerate}
 
-\subsection{Aufgabenstellung}
-\begin{itemize}
-\item Einarbeitung in das Thema GPS, GPS Tracking, GPX Format und Dokumentation des Erarbeiteten
-\item Implementierung eines technischen \flqq Where have I been\frqq-Trackers zu versuchszwecken
-\item Implementierung des Datenexports ins GPX Format
-\item Durchführen verschiedener Tests bezüglich Akkuverbrauch und Genauigkeit
-\item Präsentation der Arbeit
-\end{itemize}
-
-\subsection{Erwartete Resultate}
-\begin{itemize}
-\item Dokumentation der Einführung (GPS, GPS Tracking, GPX Format)
-\item Implementation des \flqq Where have I been\frqq-Trackers inklusive Dokumentation
-\item Implementation des GPX Datenexports inklusive Dokumentation
-\item Dokumentation der Tests und Auswertung der Resultate
-\item Präsentation
-\end{itemize}
+\subsection{Planung}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}
+	\hline
+	Informationen beschaffen \& Einarbeitung in Twitter & \\
+	API und Algorithmen & 13.03.2014 – 20.03.2014\\ \hline
+	Erstellen eines Konzepts, Festlegen welche Algorithmen & \\
+	implementiert werden sollen bzw können. & 20.03.2014 – 02.04.2014\\ \hline
+	\textbf{Milestone 1: Konzept erstellt} & \textbf{02.04.2014}\\ \hline
+	Analyse und Design der Software & 03.04.2014 – 16.04.2014\\ \hline
+	Implementation & 17.04.2014 – 07.05.2014\\ \hline
+	Testing / Dokumentation & 08.05.2014 – 14.05.2014\\ \hline
+	\textbf{Milestone 2: Implementation abgeschlossen} & \textbf{14.05.2014} \\ \hline
+	Vergleich der Ergebnisse & 15.05.2014 – 21.05.2014\\ \hline
+	Dokumentation & 22.05.2014 – 28.05.2014\\ \hline
+	Endkorrektur / Abschluss & 29.05.2014 – 16.06.2014\\ \hline
+	\textbf{Milestone 3: Arbeit fertig} & \textbf{16.06.2014} \\ \hline
+	Abgabe der Arbeit & 16.06.2014 \\ \hline
+	Präsentation & 19.06.2014 \\ \hline
+\end{tabular}
+\caption{Projektplanung}
+\end{center}
+\end{table}

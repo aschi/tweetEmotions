@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 4
+Opening config file: config/config.txt
+Config read (title: Netherlands Spain; filename: data/netherlands_spain_raw_search_1402789474.65.txt) [0.000216007232666s]
+Opening twitter logfile: data/netherlands_spain_raw_search_1402789474.65.txt
+twitter log file read (17969 tweets) [0.0490238666534s]
+initializing classifiers...
+classifiers initialised... [56.6261339188s]
+analyzing data...
+analyzing finished... [29.2883069515s]
+combining & refining results...
+emoticonTotal: positive: 340, negative: 147, neutral: 39, unsure: 17443
+sasaTotal: positive: 4857, negative: 1894, neutral: 7420, unsure: 3798
+sasaAvg: 0.113410711296
+senticnetTotal: positive: 13310, negative: 2223, neutral: 44, unsure: 2392
+senticnetAverage: pleasantness: 0.0293584097989, attention:0.110893274773, sensitivity:-0.0460062315202, aptitude: 0.131694807303, polarity: 0.0774050513829
+nltkTotal: positive: 14209, negative: 3760, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 9035, negative: 5915, neutral: 3019, unsure: 0
+sentiWordNetAverage: 0.00578868449734
+done [16.4705200195s]
+total time used: 103.20443511s

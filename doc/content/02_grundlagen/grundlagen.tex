@@ -1,90 +1,100 @@
 \clearpage
 \section{Grundlagen}
-\subsection{Grundlagen der Erdvermessung}
-Um Karten oder Modelle der Erde zu erstellen, braucht es ein Vermessungssystem welches adäquat die Grösse und Form der Erde widerspiegelt. Wichtig beim Arbeiten mit einem solchen Modell ist, dass man sich bewusst ist, welche Annahmen getroffen wurden und welche Abweichungen aus sowohl der Messmethode als auch dem Modell entstehen. In diesem Kapitel geht es um die Klärung der Grundlagen die zum Verständnis der Funktionsweise des GPS notwendig sind. \cite{geodesy}
+\subsection{Algorithmen zur Erkennung der Gefühlslage in Texten}
+Es wird grundsätzlich zwischen zwei Ansätzen zur Analyse der Gefühlslage in Texten unterschieden. Der erste Ansatz verwendet machine-learning Technologien der zweite basiert auf der lexikalischen Analyse der Texte. Für den ersten Ansatz wird ein Korpus mit gelabelten Trainingsdaten benötigt. \cite{thumbs_up} Der Hauptvorteil von machine-learning basierten Methoden ist, dass sie sich an neue Gegebeneheiten anpassen können. Der grosse Nachteil ist, dass keine gelabelten Trainingsdaten für neue Themen existieren und dass das erstellen eines neuen Datenkorpus sehr aufwändig und teuer ist. Die lexikalischen Methoden haben eine vordefinierte Liste von Wörtern welche mit bestimmten Gefühlen verknüpft sind. Um gute Resultate zu erhalten, müssen diese Wortlisten der entsprechenden Domäne angepasst werden. So werden zum Beispiel im Web-Slang andere Wörter mit anderen Gefühlen verknüpft als in einem formalen Text. \cite{comparing}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/geoid.jpg}
-  \caption[Erde, Geoid und Referenzellipsoid]{Verhältnis zwischen der Erdoberfläche, dem Geoiden und einem Referenzellipsoiden. \cite{geodesy}}
-  \label{fig:geoid}
-\end{figure}
+Im Rahmen dieser Arbeit werden sowohl machine-learning basierte als auch lexikalische Algorithmen zur Erkennung der Gefühlslage in Texten untersucht und - wenn in Python umsetzbar - auf Tweets zu verschiedenen Themen angewandt.
 
-Die Wissenschaft der Erdvermessung - auch Geodäsie - beschäftigt sich mit dem Studium von Grösse und Form der Erde, des Erdgravitationsfeldes und den Veränderungen des eben genannten. Zu den Grundlagen der Geodäsie gehört die Unterscheidung zwischen der physikalischen Erde, dem Geoid und dem Referenzellipsoid. Die physikalische Erde ist die Erde an sich. Der Geoid hat die Form, welche eine von Ozeanen bedeckte Erde, nur unter Einfluss von Gravitation und Rotation annehmen würde. Der Referenzellipsoid ist eine einfache, mathematische Form welche dem Geoid so gut als möglich entspricht. \cite{geodesy}
+\subsubsection{Emoticons}
+Der einfachste Ansatz zum erkennen der Grundhaltung des Authors gegenüber eines Themas ist die Untersuchung der Emoticons die es beinhaltet. Emoticons sind meist Kombinationen von ASCII Zeichen die einen Gesichtsausdruck darstellen. Dieser kann Gefühle unter anderem gefühle wie glücklich oder traurig representieren. Für diesen Algorithmus wurde eine Menge von gängigen Emoticons aus dem Web \cite{emoticons1}\cite{emoticons2}\cite{emoticons3} zusammengesucht und manuell in \flqq positiv\frqq, \flqq neutral\frqq, und \flqq negativ\frqq klassifiziert. Mithilfe solcher Listen kann die Anzahl Emoticons der entsprechenden Kategorie in einem Text zählen und gegeneinander Abwägen. \cite{comparing} Die Umsetzung eines solchen Algorithmus in Python stellt keine Probleme dar.
 
-\subsection{Georeferenzierung}
-Die Fähigkeit geografische Positionen genau zu beschreiben ist essentiell für sowohl Karten als auch geografische Informationssysteme. Diesen Prozess nennt man Georeferenzierung.
+\subsubsection{LIWC - Linguistic Inquiry and Word Count}
+LIWC ist ein Textanalysetool welche emotionale, kognitive und strukturelle Komponenten von Texten mithilfe eines Wörterbuchs klassifiziert. Die LIWC Software wird kommerziell vertrieben und kann - bei Bedarf - um eigene Wörterbücher ergänzt werden. LIWC liest Text ein und generiert daraus ein Tab-Delimited File welches zum Beispiel in einem Python Programm oder mithilfe von SPSS weiter verarbeitet werden könnte. Es existieren Versionen für Windows und Macintosh Computer. \cite{comparing}\cite{liwcfaq} Die fehlende Verfügbarkeit für Linux, die komplizierte Anbindung an ein Python Programm und ökonomische Gründe haben dazu geführt, dass im Rahmen dieser Arbeit keine LIWC-Python Anbindung implementiert wurde.
 
-Eine geografische Position mithilfe von Längen- und Breitengraden auf dem Referenzellipsoiden zu beschreiben ist eine Möglichkeit der Georeferenzierung. Weitere Möglichkeiten wäre zum Beispiel die Verwendung von planaren oder kartesischen Koordinatensystemen. Im Umgang mit GPS werden ausschliesslich Längen- und Breitengrade verwendet, weshalb die weiteren Möglichkeiten im Rahmen dieser Arbeit nicht weiter erläutert werden.
+\subsubsection{SentiStrength}
+SentiStrength ist ein machine-learning basiertes Textanalyse Tool welches spezialisiert ist auf die Analyse von Texten aus dem Social-Web. Die Freie Version ist auf der Basis des .Net Technologiestacks implementiert und nur für Windows verfügbar. Eine kommerzielle Version des Tools wurde in Java geschrieben. Die kommerzielle Java Version ist für Forschungszwecke frei verfügbar und kann per Email angefordert werden. Diese Version liesse sich wie im Listing \ref{lst:python_sentistrength} aufgezeigt an Python Programme anbinden. \cite{sentistrength}\cite{comparing}
 
-Die Längen- und Breitengrade sind Winkelmessungen wischen dem Zentrum des entsprechenden Ellipsoiden und einem Punkt auf der Oberfläche. Breitengrade (in Englisch latitude) messen dabei den Winkel in Nord-Süd Richtung, Längengrade (in Englisch longitude) den Ost-West Winkel. \cite{georef}
+\begin{lstlisting}[language=Python, caption={Python Anbindung an SentiStrength (JAVA)}, label={lst:python_sentistrength}]
+#Alec Larsen - University of the Witwatersrand, South Africa, 2012 import shlex, subprocess
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{images/longlat.png}
-  \caption[Längen- und Breitengrade]{Lesen von Längen- und Breitengraden \cite{georef}}
-  \label{fig:longlat}
-\end{figure}
+def RateSentiment(sentiString):
+    #open a subprocess using shlex to get the command line string into the correct args list format
+    p = subprocess.Popen(shlex.split("java -jar SentiStrength.jar stdin sentidata C:/SentStrength_Data/"),stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    #communicate via stdin the string to be rated. Note that all spaces are replaced with +
+    stdout_text, stderr_text = p.communicate(sentiString.replace(" ","+"))
+    #remove the tab spacing between the positive and negative ratings. e.g. 1-5 -> 1-5
+    stdout_text = stdout_text.rstrip().replace("\t","")
+    return stdout_text
+\end{lstlisting}
 
-\subsection{World Geodetic System 1984}
-Das World Geodetic System 1984 ist das geodätische Referenzsystem welches für GPS Positionsangaben verwendet wird. Als Koordinatenursprung dieses Systems dient das Massenzentrum der Erde. 
+Der entsprechende Email-Kontakt hat nicht innert nützlicher Frist geantwortet, weshalb dieser Algorithmus aus dieser Arbeit ausgeklammert werden musste.
 
-Dieses System besteht aus:
+\subsubsection{SentiWordNet}
+Das SentiWordNet ist eine offen verfügbare lexikalische Ressource (Wörterbuch) mithilfe welchem ein Text auf folgendes untersucht werden kann:
 \begin{itemize}
-	\item einem Referenzellipsoid für Ortsangaben nach geographischer Länge und Breite
-	\item einem Geoid
-	\item einem Satz dreidimensionaler Koordinaten der zwölf über die Erde verteilten Fundamentalstationen für die Verankerung der zuvor genannten Modelle in der Erdkruste \cite{wsg84}
+\item Subjektivität-Objektivität: Besteht ein gegebener Text primär aus Fakten, oder haften ihm Emotionen an?
+\item Positiv-Negativ: Sind die Emotionen die im Text ausgedrückt werden primär positiv oder primär negativ?
+\item Stärke der Emotion: Wie stark ist die positive oder negative Emotion in einem Text?
+\end{itemize}   
+Das Wörterbuch wird als Tabulator-getrenntes Textfile unter \url{http://sentiwordnet.isti.cnr.it/download.php} zu Verfügung gestellt. 
+Das Wörterbuch enthält folgende Spalten:
+\begin{itemize}
+\item die Wortart ('a' = Adjektiv, 'n' = Nomen, ...)
+\item eine ID (z.B. 00004980)
+\item einen Wert der die Stärke der positiven Emotionen anzeigt (Zwischen 0 und 1, folgend auch $posScore$ genannt)
+\item einen Wert der die Stärke der negativen Emotionen anzeigt (Zwischen 0 und 1, folgend auch $negScore$ genannt)
+\item das Wort an sich
+\item eine Liste von Synonymen
+\item eine Beschreibung des Wortes
 \end{itemize}
 
-\subsection{Global Positioning System}
-TODO: Grobe Zusammenfassung der Funktionsweise von GPS. Ggf auf Basis von \cite{leicagps}
-
-\subsection{Distanzberechnung zwischen GPS Koordinaten}
-Zur Berechnung der Distanz zwischen zwei GPS Koordinaten wurde in dieser Arbeit die Haversine Formel verwendet: \cite{haversine} 
-
-Definitionen:\\
+Den Wert für die Objektivität ($objScore$) lässt sich wie folgt berechnen: 
 \begin{equation}
-\begin{array}{lcl}
-\varphi_1, \varphi_2 & = & \text{Breitengrade}\\
-\lambda_1, \lambda_2 & = & \text{Längengrade}\\
-\Delta\varphi & = & \text{Differenz zwischen den Breitengraden}\\
-\Delta\lambda & = & \text{Differenz zwischen den Längengraden}\\
-R & = & \text{Radius der Erde}\\
-\end{array}
+	objScore = 1-(negScore+posScore)
 \end{equation}
 
-Berechnung:\\
-\begin{equation}
-\begin{array}{lcl}
-a & = &\sin^2(\frac{\Delta\varphi}{2})+\cos \varphi_1 \cdot \cos \varphi_2 \cdot \sin^2(\frac{\Delta\lambda}{2})\\
-c & = & 2 \cdot atan2(\sqrt{a}, \sqrt{(1-a)})\\
-d & = & R \cdot c
-\end{array}
-\end{equation}
+Zum besseren Verständnis sind im Listing \ref{lst:sentiwordnetlines} drei Zeilen aus dem aktuellen SentiWordNet Wörterbuch abgebildet.
 
-Diese Formel verwendet anstelle des Ellipsoiden eine Sphäre was bei grossen Distanzen zu Fehlern führen kann. Bei den Distanzen zwischen Messpunkten von Velotouren oder Wanderungen ist dieser Fehler nicht signifikant. Die Vorteile dieser Formel liegen in der einfachen Implementierbarkeit und der guten Performanz dieser Implementationen. 
-
-\subsection{Das GPX Datenformat}
-Das GPX oder GPS Exchange Format ist ein XML Schema zur Darstellung von GPS Daten. Es kann verwendet werden um \flqq Waypoints\frqq, \flqq Tracks\frqq und \flqq Routes\frqq darzustellen. Eine Ansammlung von \flqq Waypoints\frqq kann verwendet werden um eine Menge von Punkten darzustellen die in keinem sequenziellen Zusammenhang zueinander stehen. \flqq Routes\frqq und \flqq Tracks\frqq beinhalten sequenziell angeordnete \flqq Waypoints\frqq. Der Unterschied zwischen den Beiden ist, dass bei einer \flqq route\frqq nur Wegpunkte bei Richtungsänderungen abgebildet sind, den Rest muss sich das System daraus berechnen. Ein \flqq Track\frqq beinhaltet alle aufgezeichneten Punkte. Im Rahmen dieses Projektes werden \flqq Tracks\frqq aufgezeichnet. \cite{gpxwiki} \cite{gpx}
-
-\begin{lstlisting}[language=XML, caption={GPX Beispielfile}]
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-
-<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
-  <metadata>
-    <link href="http://www.garmin.com">
-      <text>Garmin International</text>
-    </link>
-    <time>2009-10-17T22:58:43Z</time>
-  </metadata>
-  <trk>
-    <name>Example GPX Document</name>
-    <trkseg>
-      <trkpt lat="47.644548" lon="-122.326897">
-        <ele>4.46</ele>
-        <time>2009-10-17T18:37:26Z</time>
-      </trkpt>
-    </trkseg>
-  </trk>
-</gpx>
+\begin{lstlisting}[language=Java, showtabs=true, caption={SentiWordNet Zeile)}, label={lst:sentiwordnetlines}]
+a	00004980	0	0	unabridged#1	(used of texts) not shortened; "an unabridged novel"
+a	00005107	0.5	0	uncut#7 full-length#2	complete; "the full-length play"
+a	00007813	0	0.5	nonabsorptive#1 nonabsorbent#1	not capable of absorbing or soaking up (liquids)
 \end{lstlisting}
+
+Die Gute Dokumentation und die freie Verfügbarkeit aller Ressourcen lassen eine Python Implementation des SentiWordNet Wörterbuches zu.
+
+\subsubsection{SenticNet}
+SenticNet ist eine weitere lexikalische Resource welche im Opinion Mining verwendet werden kann. Das SenticNet kann unter \url{http://sentic.net/downloads/} heruntergeladen werden. Das Wörterbuch ist in diesem Falle als XML abgespeichert. Ein Wort-Eintrag enthält neben dem Wort selbst vor allem vier Werte für pleasentness, attention, sensitivity und aptitude. Aus diesen Werten lässt sich mit folgender Formel die allgemeine Polarität (positiv oder negativ) berechnen:\cite{senticnet}
+
+\begin{equation}
+	p = \sum_{i=1}^{N} \frac{Plsnt(c_i)+|Attnt(c_i)|-|Snst(c_i)|+Aptit(c_i)}{3N}
+\end{equation}
+
+In Version 2 des SenticNet wird dieser Wert aus praktischen Gründen jeweils pro Wort direkt im Wörterbuch mitgeliefert. Um die Polarität eines ganzen Textes zu berechnen wird jedoch weiterhin die oben genannte Formel empfohlen. \cite{senticnet} Zum einfacheren Verständnis befindet sich unter Listing \ref{lst:senticnetword} Beispielhaft ein Eintrag eines Wortes.  
+
+\begin{lstlisting}[language=XML, caption={SenticNet Wort}, label={lst:senticnetword}]
+<rdf:Description rdf:about="http://sentic.net/api/en/concept/worship">
+	<rdf:type rdf:resource="http://sentic.net/api/concept"/>
+	<text xmlns="http://sentic.net/api/">worship</text>
+	<semantics xmlns="http://sentic.net/api/" rdf:resource="http://sentic.net/api/en/concept/hope"/>
+	<semantics xmlns="http://sentic.net/api/" rdf:resource="http://sentic.net/api/en/concept/religious_purpose"/>
+	<semantics xmlns="http://sentic.net/api/" rdf:resource="http://sentic.net/api/en/concept/trust"/>
+	<semantics xmlns="http://sentic.net/api/" rdf:resource="http://sentic.net/api/en/concept/devotion"/>
+	<semantics xmlns="http://sentic.net/api/" rdf:resource="http://sentic.net/api/en/concept/religious"/>
+	<pleasantness xmlns="http://sentic.net/api/" rdf:datatype="http://www.w3.org/2001/XMLSchema#float">+0.265</pleasantness>
+	<attention xmlns="http://sentic.net/api/" rdf:datatype="http://www.w3.org/2001/XMLSchema#float">+0.601</attention>
+	<sensitivity xmlns="http://sentic.net/api/" rdf:datatype="http://www.w3.org/2001/XMLSchema#float">-0.207</sensitivity>
+	<aptitude xmlns="http://sentic.net/api/" rdf:datatype="http://www.w3.org/2001/XMLSchema#float">+0.373</aptitude>
+	<polarity xmlns="http://sentic.net/api/" rdf:datatype="http://www.w3.org/2001/XMLSchema#float">+0.344</polarity>
+</rdf:Description>
+\end{lstlisting}
+
+Alle Grundlagen und das Wörterbuch des SenticNet sind frei zugänglich, weshalb sich auch hier eine entsprechende Python Implementation anbot.
+
+\subsubsection{SASA - SailAil Sentiment Analyzer}
+Der SailAil Sentiment Analyzer ist eine machine-learning basierte Library die direkt für Python verfügbar ist. In dieser Arbeit wurde die Library in der Version 0.1.3 verwendet (\url{https://pypi.python.org/pypi/sasa/0.1.3})
+
+\subsubsection{Klassifizierung mit NLTK und naivem Bayes}
+Bei der Recherche zu dieser Arbeit bin ich über einen Artikel von Jacob Perkins \cite{nltkbayes} gestolpert. Er beschreibt wie man mithilfe des Natural Language Toolkits (NLTK) \cite{nltk} einen einfachen Sentiment Analyzer implementieren kann. Er trainiert einen \lstinline$nltk.classify.NaiveBayesClassifier$ mithilfe des NLTK eigenen Film-Review Korpus (\lstinline$nltk.corpus.movie_reviews$).
+
+\subsection{Twitter API}

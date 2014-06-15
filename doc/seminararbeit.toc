@@ -1,22 +1,22 @@
 \contentsline {section}{\numberline {1}Einleitung}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Ausgangslage}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Ziele der Arbeit}{2}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Aufgabenstellung}{2}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Erwartete Resultate}{3}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.1}Thema, Motivation und Ziel der Arbeit}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Planung}{3}{subsection.1.2}
 \contentsline {section}{\numberline {2}Grundlagen}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1}Grundlagen der Erdvermessung}{4}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Georeferenzierung}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}World Geodetic System 1984}{5}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Global Positioning System}{6}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Distanzberechnung zwischen GPS Koordinaten}{6}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Das GPX Datenformat}{6}{subsection.2.6}
-\contentsline {section}{\numberline {3}Umsetzung}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Android App}{8}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Distanzberechnung}{8}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Akkumessung}{8}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}GPS XML}{8}{subsection.3.4}
-\contentsline {section}{\numberline {4}Analyse}{9}{section.4}
-\contentsline {subsection}{\numberline {4.1}Genauigkeit der Daten}{9}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Akkuverbrauch}{9}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Verwendbarkeit der Daten}{9}{subsection.4.3}
-\contentsline {section}{\numberline {5}Fazit}{10}{section.5}
+\contentsline {subsection}{\numberline {2.1}Algorithmen zur Erkennung der Gef\IeC {\"u}hlslage in Texten}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Emoticons}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}LIWC - Linguistic Inquiry and Word Count}{4}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}SentiStrength}{5}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}SentiWordNet}{5}{subsubsection.2.1.4}
+\contentsline {subsubsection}{\numberline {2.1.5}SenticNet}{7}{subsubsection.2.1.5}
+\contentsline {subsubsection}{\numberline {2.1.6}SASA - SailAil Sentiment Analyzer}{8}{subsubsection.2.1.6}
+\contentsline {subsubsection}{\numberline {2.1.7}Klassifizierung mit NLTK und naivem Bayes}{8}{subsubsection.2.1.7}
+\contentsline {section}{\numberline {3}Umsetzung}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Android App}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Distanzberechnung}{9}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Akkumessung}{9}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}GPS XML}{9}{subsection.3.4}
+\contentsline {section}{\numberline {4}Analyse}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Genauigkeit der Daten}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Akkuverbrauch}{10}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Verwendbarkeit der Daten}{10}{subsection.4.3}
+\contentsline {section}{\numberline {5}Fazit}{11}{section.5}

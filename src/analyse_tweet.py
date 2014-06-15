@@ -1,9 +1,12 @@
 #!/usr/local/bin/python
 # coding: utf8
 
-from emoticonAlgorithm import emoticonAlgorithm
-import sentimentanalysis
+from emoticon_algorithm import emoticonAlgorithm
+import sentiment_analysis
+from autolabel import autolabel
 from senticnet import SenticScore
+import numpy as np
+import matplotlib.pyplot as plt
 
 class TweetAnalysationResult:
 	def __init__(self, emoticonResult, sasaResult, senticNetResult, nltkResult, sentiWordNetResult):
@@ -28,38 +31,51 @@ class SentimentTotal:
 			self.neutralTotal = self.neutralTotal + 1
 		elif(string == "n/a" or string == "unsure"):
 			self.naTotal = self.naTotal + 1
+	def plot(self, filename):
+		xaxis = range(4)
+		bars = [self.positiveTotal, self.negativeTotal, self.neutralTotal, self.naTotal]
+		labels = ["positive", "negative", "neutral", "unsure"]
+
+		minY = 0
+		maxY = 0
+		
+		for y in bars:
+			if y > maxY:
+				maxY = y
+			if y < minY:
+				minY = y
+
+		fig = plt.figure(figsize=(8, 6))
+		plt.subplots_adjust(bottom=0.15, left=0.10, right=0.90, top=0.95)
+
+		plt.ylim([minY,maxY])
+		plt.xticks(xaxis, labels, rotation='vertical', size='small', ha='center')
+		rects = plt.bar(xaxis, bars, 0.5, alpha=0.4, color='b', align="center")
+		autolabel(rects)
+		rects[0].set_color('g')
+		rects[1].set_color('r')
+		rects[2].set_color('y')
+		rects[3].set_color('0.5')
+		plt.savefig(filename)
+		plt.clf()
+		plt.close()
+
 	def __str__(self):
 		return "positive: " + str(self.positiveTotal) + ", negative: " + str(self.negativeTotal) + ", neutral: " + str(self.neutralTotal) + ", unsure: " + str(self.naTotal)
-
-class SentimentScore:
-	def __init__(self, neg, pos, neutral):
-		self.neg = neg
-		self.pos = pos
-		self.neutral = neutral
-
-	def add(other):
-		self.neg = self.neg + other.neg
-		self.pos = self.post + other.pos
-		self.neutral = self.neutral + other.neutral
-	def __str__(self):
-		return "neg: " + str(self.neg) + ", pos: " + str(self.pos) + ", neutral: " + str(self.neutral)
 
 def analyseTweet(tweet, sasaInstance, senticNetInstance, sentiWordNetInstance, nltkTweetClassifierInstance):
 	emoticonRes = emoticonAlgorithm(tweet) #returns a string "neurtal", "negative", "positive", "n/a"
 	sasaRes = sasaInstance.classifyTweet(tweet)
 	sasaResReformated = [sasaRes[0], sasaRes[1]] #[0] = unicode "neutral", "negative", "positive", "unsure" [1] = score (float; negative values = negative, positive values = positive)
 	senticNetRes = senticNetInstance.getTweetSenticScore(tweet) #SenticScore object
-	
-	#sentiment API has limitations and is therefore no longer used
-	#sentimentRes = sentimentanalysis.analyzeTweet(tweet) #Object [label=>("neg", "pos", "neutral"); probability=>[neg:float, neutral:float, pos:float]]
-	
+
 	nltkRes = nltkTweetClassifierInstance.classifyTweet(tweet) #String "pos", "neg"
 
 	sentiWordNetRes = sentiWordNetInstance.getTweetScore(tweet)  #float indicating wheter the tweet is positive (positive number) or negative (negative number)
 	return TweetAnalysationResult(emoticonRes, sasaResReformated, senticNetRes, nltkRes, sentiWordNetRes)
 
 
-def combineResults(resultList):
+def combineResults(resultList, titleFilePrefix, log):
 	noTweets = len(resultList)
 
 	emoticonTotal = SentimentTotal(0, 0, 0, 0)
@@ -67,11 +83,9 @@ def combineResults(resultList):
 	sasaTotal = SentimentTotal(0, 0, 0, 0)
 	sasaAverage = 0.0
 
+	senticnetTotal = SentimentTotal(0, 0, 0, 0)
 	senticnetAverage = SenticScore(0, 0, 0, 0, 0)
 	senticCount = 0
-
-	#sentimentTotal = SentimentTotal(0, 0, 0, 0)
-	#sentimentAverage = SentimentScore(0, 0, 0)
 
 	nltkTotal = SentimentTotal(0, 0, 0, 0)
 
@@ -87,14 +101,19 @@ def combineResults(resultList):
 		sasaTotal.count(r.sasaResult[0])
 		sasaAverage = sasaAverage + r.sasaResult[1]
 
-		#senticnet: calculate average
-		if(r.senticNetResult != None):
-			senticnetAverage.add(r.senticNetResult)
-			senticCount = senticCount + 1
+		#senticnet: count and calculate average
+		if(r.senticNetResult == None):
+			senticnetTotal.count("unsure")
+		elif(r.senticNetResult.calcTweetPolarity() > 0.001):
+			senticnetTotal.count("positive")
+		elif(r.senticNetResult.calcTweetPolarity() < -0.001):
+			senticnetTotal.count("negative")
+		else:
+			senticnetTotal.count("neutral")
 
-		#sentiment: count and calculate average
-		#sentimentTotal.count(r.sentimentRes["label"])
-		#sentimentAverage.add(r.sentimentRes["probability"])
+		if(r.senticNetResult != None):
+			senticnetAverage.add(r.senticNetResult.average())
+			senticCount = senticCount + 1
 
 		#nltk: count
 		nltkTotal.count(r.nltkResult)
@@ -102,12 +121,12 @@ def combineResults(resultList):
 		#sentiwordnet: count and calculate average
 		if(r.sentiWordNetResult == None):
 			sentiWordNetTotal.count("unsure")
-		elif(r.sentiWordNetResult > 0):
+		elif(r.sentiWordNetResult > 0.001):
 			sentiWordNetTotal.count("positive")
-		elif(r.sentiWordNetResult == 0):
-			sentiWordNetTotal.count("neutral")
-		else:
+		elif(r.sentiWordNetResult < -0.001):
 			sentiWordNetTotal.count("negative")
+		else:
+			sentiWordNetTotal.count("neutral")
 
 		if r.sentiWordNetResult != None:
 			sentiWordNetAverage = sentiWordNetAverage + r.sentiWordNetResult
@@ -124,25 +143,25 @@ def combineResults(resultList):
 		senticnetAverage.polarity / senticCount
 	)
 
-	#sentimentAverage = SentimentScore(
-	#	sentimentAverage.neg / noTweets,
-	#	sentimentAverage.pos / noTweets,
-	#	sentimentAverage.neutral / noTweets,
-	#)
-
 	sentiWordNetAverage = sentiWordNetAverage / sentiWordNetCount
 
-	print "emoticonTotal: " + str(emoticonTotal)
+	log.log("emoticonTotal: " + str(emoticonTotal))
 
-	print "sasaTotal: " + str(sasaTotal)
-	print "sasaAvg: " + str(sasaAverage)
+	log.log("sasaTotal: " + str(sasaTotal))
+	log.log("sasaAvg: " + str(sasaAverage))
 
-	print "senticnetAverage: " + str(senticnetAverage)
+	log.log("senticnetTotal: " + str(senticnetTotal))
+	log.log("senticnetAverage: " + str(senticnetAverage))
 
-	#print "sentimentTotal: " + str(sentimentTotal)
-	#print "sentimentAverage: " + str(sentimentAverage)
+	log.log("nltkTotal: " + str(nltkTotal))
 
-	print "nltkTotal: " + str(nltkTotal)
+	log.log("sentiWordNetTotal: " + str(sentiWordNetTotal))
+	log.log("sentiWordNetAverage: " + str(sentiWordNetAverage))
 
-	print "sentiWordNetTotal: " + str(sentiWordNetTotal)
-	print "sentiWordNetAverage: " + str(sentiWordNetAverage)
+	emoticonTotal.plot("plots/" + titleFilePrefix+"_emoticon.svg")
+	sasaTotal.plot("plots/" + titleFilePrefix+"_sasa.svg")
+	nltkTotal.plot("plots/" + titleFilePrefix+"_nltk.svg")
+	sentiWordNetTotal.plot("plots/" + titleFilePrefix+"_sentiwordnet.svg")
+	sentiWordNetTotal.plot("plots/" + titleFilePrefix+"_sentiwordnet.svg")
+	senticnetTotal.plot("plots/" + titleFilePrefix+"_senticnet_total.svg")
+	senticnetAverage.plot("plots/" + titleFilePrefix+"_senticnet_avg.svg")
