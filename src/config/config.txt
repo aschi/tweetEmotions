@@ -1,1 +1,1 @@
-data/worldcup_brazil_raw_search_1402793686.62.txt#-#-#-#Worldcup Brazil
+data/switzerland_ecuador_raw_search_1402858224.12.txt#-#-#-#Schweiz Ecuador

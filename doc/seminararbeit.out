@@ -3,13 +3,14 @@
 \BOOKMARK [2][-]{subsection.1.2}{Planung}{section.1}% 3
 \BOOKMARK [1][-]{section.2}{Grundlagen}{}% 4
 \BOOKMARK [2][-]{subsection.2.1}{Algorithmen zur Erkennung der Gef\374hlslage in Texten}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{Umsetzung}{}% 6
-\BOOKMARK [2][-]{subsection.3.1}{Android App}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.2}{Distanzberechnung}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.3}{Akkumessung}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.4}{GPS XML}{section.3}% 10
-\BOOKMARK [1][-]{section.4}{Analyse}{}% 11
-\BOOKMARK [2][-]{subsection.4.1}{Genauigkeit der Daten}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.2}{Akkuverbrauch}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.3}{Verwendbarkeit der Daten}{section.4}% 14
-\BOOKMARK [1][-]{section.5}{Fazit}{}% 15
+\BOOKMARK [2][-]{subsection.2.2}{Twitter Search API}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Umsetzung}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Android App}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Distanzberechnung}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Akkumessung}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{GPS XML}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Analyse}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Genauigkeit der Daten}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Akkuverbrauch}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Verwendbarkeit der Daten}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Fazit}{}% 16

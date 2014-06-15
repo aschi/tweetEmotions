@@ -10,13 +10,14 @@
 \contentsline {subsubsection}{\numberline {2.1.5}SenticNet}{7}{subsubsection.2.1.5}
 \contentsline {subsubsection}{\numberline {2.1.6}SASA - SailAil Sentiment Analyzer}{8}{subsubsection.2.1.6}
 \contentsline {subsubsection}{\numberline {2.1.7}Klassifizierung mit NLTK und naivem Bayes}{8}{subsubsection.2.1.7}
-\contentsline {section}{\numberline {3}Umsetzung}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Android App}{9}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Distanzberechnung}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Akkumessung}{9}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}GPS XML}{9}{subsection.3.4}
-\contentsline {section}{\numberline {4}Analyse}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Genauigkeit der Daten}{10}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Akkuverbrauch}{10}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Verwendbarkeit der Daten}{10}{subsection.4.3}
-\contentsline {section}{\numberline {5}Fazit}{11}{section.5}
+\contentsline {subsection}{\numberline {2.2}Twitter Search API}{8}{subsection.2.2}
+\contentsline {section}{\numberline {3}Umsetzung}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Android App}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Distanzberechnung}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Akkumessung}{10}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}GPS XML}{10}{subsection.3.4}
+\contentsline {section}{\numberline {4}Analyse}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Genauigkeit der Daten}{11}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Akkuverbrauch}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Verwendbarkeit der Daten}{11}{subsection.4.3}
+\contentsline {section}{\numberline {5}Fazit}{12}{section.5}

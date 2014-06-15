@@ -4,6 +4,10 @@
 Emoticons - show your friends how you really feel.
 \newblock \url{https://messenger.yahoo.com/features/emoticons}.
 
+\bibitem{twitterapi}
+Get search/tweets.
+\newblock \url{https://dev.twitter.com/docs/api/1.1/get/search/tweets}.
+
 \bibitem{emoticons3}
 List of text emoticons – the ultimate resource.
 \newblock \url{http://cool-smileys.com/text-emoticons}.
@@ -15,6 +19,10 @@ The liwc2007 application.
 \bibitem{sentistrength}
 Sentistrength - java version.
 \newblock \url{http://sentistrength.wlv.ac.uk/#Java}.
+
+\bibitem{twitterstreaming}
+The streaming apis.
+\newblock \url{https://dev.twitter.com/docs/api/streaming}.
 
 \bibitem{emoticons2}
 What is the full list of emoticons?
@@ -38,6 +46,11 @@ Pollyanna Goncalves, Fabricio Benevenuto, Matheus Araujo, and Meeyoung Cha.
 \newblock Comparing and combining sentiment analysis methods.
 \newblock {\em Proceedings of the first ACM conference on Online social
   networks}.
+
+\bibitem{twittersearch}
+Christian Koepp.
+\newblock Twittersearch.
+\newblock \url{https://github.com/ckoepp/TwitterSearch}.
 
 \bibitem{thumbs_up}
 B~Pang, L~Lee, and S~Vaithyanathan.

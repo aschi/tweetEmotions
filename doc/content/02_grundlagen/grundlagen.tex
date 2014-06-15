@@ -97,4 +97,29 @@ Der SailAil Sentiment Analyzer ist eine machine-learning basierte Library die di
 \subsubsection{Klassifizierung mit NLTK und naivem Bayes}
 Bei der Recherche zu dieser Arbeit bin ich über einen Artikel von Jacob Perkins \cite{nltkbayes} gestolpert. Er beschreibt wie man mithilfe des Natural Language Toolkits (NLTK) \cite{nltk} einen einfachen Sentiment Analyzer implementieren kann. Er trainiert einen \lstinline$nltk.classify.NaiveBayesClassifier$ mithilfe des NLTK eigenen Film-Review Korpus (\lstinline$nltk.corpus.movie_reviews$).
 
-\subsection{Twitter API}
+\subsection{Twitter Search API}
+\label{subsec:grundlagentwitter}
+Das Twitter Search API\cite{twitterapi} ist ein REST API welches es erlaubt Tweets zu bestimmten Themen zu suchen. Christian Koepp hat eine Python Anbindung an dieses API implementiert\cite{twittersearch}. Mithilfe dieser Anbindung lässt sich in wenigen Zeilen (Siehe Listing \ref{lst:twitterSearch}) eine Twitter Anbindung realisieren.
+
+\begin{lstlisting}[language=Python, caption={TwitterSearch Python-Twitter Anbindung}, label={lst:twitterSearch}]
+from TwitterSearch import *
+try:
+    tso = TwitterSearchOrder()
+    tso.setKeywords(['Worldcup', 'Brazil'])
+    tso.setLanguage('en')
+    tso.setIncludeEntities(False)
+
+    ts = TwitterSearch(
+    	consumer_key = 'aaabbb', 
+    	consumer_secret = 'cccddd', 
+    	access_token = '111222', 
+    	access_token_secret = '333444'
+    )
+
+    for tweet in ts.searchTweetsIterable(tso):
+        print( '@%s tweeted: %s' % ( tweet['user']['screen_name'], tweet['text'] ) )
+except TwitterSearchException as e:
+    print(e)
+\end{lstlisting}
+
+Was das Twitter Search API nicht bietet, ist die Möglichkeit nach Tweets in bestimmten Zeiträumen zu suchen. Man sucht jeweils im aktuellen \lstinline$SearchIndex$ welcher sowohl aus populären als auch sehr aktuellen Tweets besteht. Für die in der Aufgabenstellung beschriebene Zeitraum-Auswahl-Funktion könnten Daten von einem kommerziellen Anbieter bezogen werden oder man könnte sich selber ein Twitter Archiv mithilfe der Streaming API \cite{twitterstreaming} anlegen. Im Rahmen dieser Arbeit wurde darauf verzichtet. Das heisst, in der im Rahmen dieser Arbeit erstellten Applikation kann \flqq nur\frqq nach aktuellen oder populären Tweets mithilfe von Stichwörtern gesucht werden. 
