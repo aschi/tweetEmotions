@@ -1,7 +1,7 @@
 \clearpage
 \section{Analyse}
 \subsection{Vergleich der Algorithmen}
-Bei den Experimenten mit den verschiedenen Algorithmen ist aufgefallen, dass der Emoticon Algorithmus aufgrund der seltenen Verwendung von Emoticons in Tweets praktisch nicht funktioniert. Je ernster das Thema desto weniger Emoticons werden tendenziell verwendet. Folgend die Resultate zweier Twitter Downloads. Die Keywörter für den ersten Download waren \flqq switzerland \frqq und \flqq ecuador\frqq. Die Schweiz hat kurz zuvor am WM Auftaktspiel in der 93. Minute das entscheidende 2:1 gegen Ecuador geschossen. Die Keywörter für den zweiten Download waren \flqq ISIS\frqq und \flqq Iraq\flqq. ISIS ist eine militante Jihadistengruppe, die derzeit für unruhen im Nordiran sorgt. \cite{isis} Folgend werden diese Resultate beschrieben und es werden Thesen zu den Resultaten der Twitteranalysen aufgestellt. Um diese zu verifizieren oder zu falsifizieren, bräuchte man gelabelte Twitterdaten, welche im Rahmen dieser Arbeit nicht erarbeitet werden konnten.
+Bei den Experimenten mit den verschiedenen Algorithmen ist aufgefallen, dass der Emoticon Algorithmus aufgrund der seltenen Verwendung von Emoticons in Tweets praktisch nicht funktioniert. Je ernster das Thema, desto weniger Emoticons werden tendenziell verwendet. Folgend wurden die Resultate zweier Twitter Downloads untersucht. Die Keywörter für den ersten Download waren \flqq switzerland \frqq und \flqq ecuador\frqq. Die Schweiz hat kurz zuvor am WM Auftaktspiel in der 93. Minute das entscheidende 2:1 gegen Ecuador geschossen. Die Keywörter für den zweiten Download waren \flqq ISIS\frqq und \flqq Iraq\flqq. ISIS ist eine militante Jihadistengruppe, die derzeit für Unruhen im Nordiran sorgt. \cite{isis} In den folgenden Abschnitten werden diese Resultate beschrieben und es werden Thesen zu den Resultaten der Twitteranalysen aufgestellt. Das verifizieren oder falsifizieren dieser Thesen ist nicht Teil dieser Arbeit.
 
 \begin{figure}[h]
   \centering
@@ -31,11 +31,11 @@ Beim der Twitteranalyse mithilfe des naiven Bayes der NLTK Library (Abbildung \r
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/schweizvsirak_senticnet.pdf}
-  \caption[SenticNet: Schweiz - Ecuador vs. ISIS im Irak]{SASA: Schweiz - Ecuador vs. ISIS im Irak}
+  \caption[SenticNet: Schweiz - Ecuador vs. ISIS im Irak]{SenticNet: Schweiz - Ecuador vs. ISIS im Irak}
   \label{fig:senticnetanalysis}
 \end{figure}
 
-Die SASA Library (vgl. Abbildung \ref{fig:sasaanalysis}) hat viele der Irak-Tweets als neutral gelabelt. Dies würde sich mit meiner Beobachtung der vielen Zeitungsüberschriften decken. Weiter scheint der Algorithmus Probleme mit den sehr kurzen Tweets im Stil von \flqq \#Switzerland beats \#ecuador 2-1 at World \#EnnerValencia \#WorldCups\frqq zu haben. Er Kategorisiert diese gar nicht erst. 
+Die SASA Library (vgl. Abbildung \ref{fig:sasaanalysis}) hat viele der Irak-Tweets als neutral gelabelt. Dies würde sich mit meiner Beobachtung der vielen Zeitungsüberschriften decken. Weiter scheint der Algorithmus Probleme mit den sehr kurzen Tweets im Stil von \flqq \#Switzerland beats \#ecuador 2-1 at World \#EnnerValencia \#WorldCups\frqq zu haben. Diese werden gar nicht erst kategorisiert. 
 
 Der SenticNet (vgl. Abbildung \ref{fig:senticnetanalysis}) Algorithmus zeigt für die Schweiz-Ecuador Tweets deutlich positivere Resultate als für die Tweets zum Treiben der ISIS Jihadisten im Irak. Diese Resultate scheinen plausibel zu sein.
 
@@ -48,11 +48,11 @@ Der SenticNet (vgl. Abbildung \ref{fig:senticnetanalysis}) Algorithmus zeigt fü
 
 Auch die Resultate des SentiWordNet (Abbildung \ref{fig:sentiwordnet}) scheinen plausibel zu sein. Hier werden negative Emotionen aus den ISIS Tweets herausgelesen und das Schweizer Tor in der 93. Minuten wird zwar von der Mehrheit, jedoch nicht von allen Twitterern positiv beschrieben.
 
-Diese Beobachtungen decken sich mit den Erkenntnissen von Pollyanna Gonçalves et al. \cite{comparing}. Um wirklich etwas darüber auszusagen müsste gefilterte, bereinigte und manuell klassifizierte Tweets zu unterschiedlichen Themen untersuchen.
+Diese Beobachtungen decken sich mit den Erkenntnissen von Pollyanna Gonçalves et al. \cite{comparing}. Um wirklich etwas darüber aussagen zu können, müssten gefilterte, bereinigte und manuell klassifizierte Tweets zu unterschiedlichen Themen untersucht werden.
 
 \clearpage
 \subsection{Parallelisierung}
-Die Vorteile der Parallelisierung auf meinem 4-Kerne System waren bereits ab wenigen tausend Tweets spürbar. Um zu sehen wie viel die Parallelisierung wirklich aus macht, wurden die Tweets über die ISIS Jihadisten mehrfach mit unterschiedlicher Anzahl Prozesse vom Programm analysiert. Dabei sind mir vor allem Unterschiede in den Zeiten für die Analysen an sich (der parallelisierte Teil) und der Initialisierung ins Auge gefallen. 
+Die Vorteile der Parallelisierung auf meinem 4-Kerne System waren bereits ab wenigen tausend Tweets spürbar. Um zu sehen, wie viel die Parallelisierung wirklich aus macht, wurden die Tweets über die ISIS Jihadisten mehrfach mit unterschiedlicher Anzahl Prozesse vom Programm analysiert. Dabei sind mir vor allem Unterschiede in den Zeiten für die Analysen an sich (der parallelisierte Teil) und der Initialisierung ins Auge gefallen. 
 
 \begin{figure}[h]
   \centering
@@ -64,6 +64,6 @@ Die Vorteile der Parallelisierung auf meinem 4-Kerne System waren bereits ab wen
 
 In der Abbildung \ref{fig:analyseparallel} ist ersichtlich, wie die Zeit für die Initialisierung bis zum erreichen der physisch vorhandenen 4-Kerne praktisch konstant bleibt. Wenn man die Anzahl Prozesse weiter erhöht, nimmt die Dauer für die Initialisierung stark zu. Dies liegt daran, dass sowohl der SASA Algorithmus als auch der NLTK Classifier für jeden Prozess initialisiert werden müssen. Diese Initialisierungen sind sehr aufwändig und wenn die physisch vorhandenen 4-Kerne diese Aufgabe für mehr als 4 Prozesse erledigen sollen, dauert dies entsprechend länger.
 
-Die Zeit für die Analyse ist bei einem Prozess am höchsten, und nimmt bis zum erreichen der 4 vorhandenen Cores um fast $\frac{2}{3}$ von 30s auf unter 10s ab. Wenn mehr Prozesse verwendet werden, wird diese Zeit nicht merklich erhöht aber sie nimmt auch nicht mehr ab.
+Die Zeit für die Analyse ist bei einem Prozess am höchsten und nimmt bis zum Erreichen der 4 vorhandenen Cores um fast $\frac{2}{3}$ von 30s auf unter 10s ab. Wenn mehr Prozesse verwendet werden, wird diese Zeit nicht merklich erhöht aber sie nimmt auch nicht mehr ab.
 
 Daraus lässt sich schlussfolgern, dass in dem gegebenen Setup 4 Prozesse die beste Performance bieten. Weiter könnte man daraus ableiten, dass die optimale Anzahl Prozesse der Anzahl verfügbarer Cores entspricht. Diese These könnte unter gleichen Testbedingungen auf verschiedenen Setups weiter untersucht und gegebenenfalls verifiziert oder falsifiziert werden. Die Einstellung zur Anzahl Prozesse kann im \lstinline$starter.py$ angepasst werden.

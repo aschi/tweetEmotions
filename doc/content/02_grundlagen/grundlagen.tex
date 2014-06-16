@@ -1,18 +1,18 @@
 \clearpage
 \section{Grundlagen}
 \subsection{Algorithmen zur Erkennung der Gefühlslage in Texten}
-Es wird grundsätzlich zwischen zwei Ansätzen zur Analyse der Gefühlslage in Texten unterschieden. Der erste Ansatz verwendet machine-learning Technologien der zweite basiert auf der lexikalischen Analyse der Texte. Für den ersten Ansatz wird ein Korpus mit gelabelten Trainingsdaten benötigt. \cite{thumbs_up} Der Hauptvorteil von machine-learning basierten Methoden ist, dass sie sich an neue Gegebeneheiten anpassen können. Der grosse Nachteil ist, dass keine gelabelten Trainingsdaten für neue Themen existieren und dass das erstellen eines neuen Datenkorpus sehr aufwändig und teuer ist. Die lexikalischen Methoden haben eine vordefinierte Liste von Wörtern welche mit bestimmten Gefühlen verknüpft sind. Um gute Resultate zu erhalten, müssen diese Wortlisten der entsprechenden Domäne angepasst werden. So werden zum Beispiel im Web-Slang andere Wörter mit anderen Gefühlen verknüpft als in einem formalen Text. \cite{comparing}
+Es wird grundsätzlich zwischen zwei Ansätzen zur Analyse der Gefühlslage in Texten unterschieden. Der erste Ansatz verwendet machine-learning Technologien, der zweite basiert auf der lexikalischen Analyse der Texte. Für den ersten Ansatz wird ein Korpus mit gelabelten Trainingsdaten benötigt. \cite{thumbs_up} Der Hauptvorteil von machine-learning basierten Methoden ist, dass sie sich an neue Gegebeneheiten anpassen können. Der grosse Nachteil ist, dass keine gelabelten Trainingsdaten für neue Themen existieren und dass das Erstellen eines neuen Datenkorpus sehr aufwändig und teuer ist. Die lexikalischen Methoden haben eine vordefinierte Liste von Wörtern, welche mit bestimmten Gefühlen verknüpft sind. Um gute Resultate zu erhalten, müssen diese Wortlisten der entsprechenden Domäne angepasst werden. So werden zum Beispiel im Web-Slang andere Wörter mit anderen Gefühlen verknüpft, als in einem formalen Text. \cite{comparing}
 
 Im Rahmen dieser Arbeit werden sowohl machine-learning basierte als auch lexikalische Algorithmen zur Erkennung der Gefühlslage in Texten untersucht und - wenn in Python umsetzbar - auf Tweets zu verschiedenen Themen angewandt.
 
 \subsubsection{Emoticons}
-Der einfachste Ansatz zum erkennen der Grundhaltung des Authors gegenüber eines Themas ist die Untersuchung der Emoticons die es beinhaltet. Emoticons sind meist Kombinationen von ASCII Zeichen die einen Gesichtsausdruck darstellen. Dieser kann Gefühle unter anderem gefühle wie glücklich oder traurig representieren. Für diesen Algorithmus wurde eine Menge von gängigen Emoticons aus dem Web \cite{emoticons1}\cite{emoticons2}\cite{emoticons3}\cite{emoticons4} zusammengesucht und manuell in \flqq positiv\frqq, \flqq neutral\frqq, und \flqq negativ\frqq klassifiziert. Mithilfe solcher Listen kann die Anzahl Emoticons der entsprechenden Kategorie in einem Text zählen und gegeneinander Abwägen. \cite{comparing} Die Umsetzung eines solchen Algorithmus in Python stellt keine Probleme dar.
+Der einfachste Ansatz zum erkennen der Grundhaltung des Authors gegenüber eines Themas ist die Untersuchung der Emoticons die ein Text oder Tweet beinhaltet. Emoticons sind meist Kombinationen von ASCII Zeichen die einen Gesichtsausdruck darstellen. Dieser kann unter anderem Gefühle wie glücklich oder traurig repräsentieren. Für diesen Algorithmus wurde eine Menge von gängigen Emoticons aus dem Web \cite{emoticons1}\cite{emoticons2}\cite{emoticons3}\cite{emoticons4} zusammengesucht und manuell in \flqq positiv\frqq, \flqq neutral\frqq, und \flqq negativ\frqq klassifiziert. Mithilfe solcher Listen kann die Anzahl Emoticons der entsprechenden Kategorie in einem Text gezählt und gegeneinander abgewogen werden. \cite{comparing} Die Umsetzung eines solchen Algorithmus in Python stellt keine Probleme dar.
 
 \subsubsection{LIWC - Linguistic Inquiry and Word Count}
-LIWC ist ein Textanalysetool welche emotionale, kognitive und strukturelle Komponenten von Texten mithilfe eines Wörterbuchs klassifiziert. Die LIWC Software wird kommerziell vertrieben und kann - bei Bedarf - um eigene Wörterbücher ergänzt werden. LIWC liest Text ein und generiert daraus ein Tab-Delimited File welches zum Beispiel in einem Python Programm oder mithilfe von SPSS weiter verarbeitet werden könnte. Es existieren Versionen für Windows und Macintosh Computer. \cite{comparing}\cite{liwcfaq} Die fehlende Verfügbarkeit für Linux, die komplizierte Anbindung an ein Python Programm und ökonomische Gründe haben dazu geführt, dass im Rahmen dieser Arbeit keine LIWC-Python Anbindung implementiert wurde.
+LIWC ist ein Textanalysetool, welches emotionale, kognitive und strukturelle Komponenten von Texten mithilfe eines Wörterbuchs klassifiziert. Die LIWC Software wird kommerziell vertrieben und kann - bei Bedarf - um eigene Wörterbücher ergänzt werden. LIWC liest Text ein und generiert daraus ein Tab-Delimited File, welches zum Beispiel in einem Python Programm oder mithilfe von SPSS weiter verarbeitet werden könnte. Es existieren Versionen für Windows und Macintosh Computer. \cite{comparing}\cite{liwcfaq} Die fehlende Verfügbarkeit für Linux, die komplizierte Anbindung an ein Python Programm und ökonomische Gründe haben dazu geführt, dass im Rahmen dieser Arbeit keine LIWC-Python Anbindung implementiert wurde.
 
 \subsubsection{SentiStrength}
-SentiStrength ist ein machine-learning basiertes Textanalyse Tool welches spezialisiert ist auf die Analyse von Texten aus dem Social-Web. Die Freie Version ist auf der Basis des .Net Technologiestacks implementiert und nur für Windows verfügbar. Eine kommerzielle Version des Tools wurde in Java geschrieben. Die kommerzielle Java Version ist für Forschungszwecke frei verfügbar und kann per Email angefordert werden. Diese Version liesse sich wie im Listing \ref{lst:python_sentistrength} aufgezeigt an Python Programme anbinden. \cite{sentistrength}\cite{comparing}
+SentiStrength ist ein machine-learning basiertes Textanalysetool, welches auf die Analyse von Texten aus dem Social-Web spezialisiert ist. Die freie Version ist auf der Basis des .Net Technologiestacks implementiert und nur für Windows verfügbar. Eine kommerzielle Version des Tools wurde in Java geschrieben. Die kommerzielle Java Version ist für Forschungszwecke frei verfügbar und kann per Email angefordert werden. Diese Version liesse sich wie im Listing \ref{lst:python_sentistrength} aufgezeigt an Python Programme anbinden. \cite{sentistrength}\cite{comparing}
 
 \begin{lstlisting}[language=Python, caption={Python Anbindung an SentiStrength (JAVA)}, label={lst:python_sentistrength}]
 #Alec Larsen - University of the Witwatersrand, South Africa, 2012 import shlex, subprocess
@@ -30,7 +30,7 @@ def RateSentiment(sentiString):
 Der entsprechende Email-Kontakt hat nicht innert nützlicher Frist geantwortet, weshalb dieser Algorithmus aus dieser Arbeit ausgeklammert werden musste.
 
 \subsubsection{SentiWordNet}
-Das SentiWordNet ist eine offen verfügbare lexikalische Ressource (Wörterbuch) auf der Basis von WordNet\cite{wordnet} mithilfe welchem ein Text auf folgendes untersucht werden kann:
+Das SentiWordNet ist eine offen verfügbare lexikalische Ressource (Wörterbuch) auf der Basis von WordNet\cite{wordnet}, mithilfe dessen ein Text auf folgendes untersucht werden kann:
 \begin{itemize}
 \item Subjektivität-Objektivität: Besteht ein gegebener Text primär aus Fakten, oder haften ihm Emotionen an?
 \item Positiv-Negativ: Sind die Emotionen die im Text ausgedrückt werden primär positiv oder primär negativ?
@@ -61,10 +61,10 @@ a	00005107	0.5	0	uncut#7 full-length#2	complete; "the full-length play"
 a	00007813	0	0.5	nonabsorptive#1 nonabsorbent#1	not capable of absorbing or soaking up (liquids)
 \end{lstlisting}
 
-Die Gute Dokumentation und die freie Verfügbarkeit aller Ressourcen lassen eine Python Implementation des SentiWordNet Wörterbuches zu.
+Die gute Dokumentation und die freie Verfügbarkeit aller Ressourcen lassen eine Python Implementation des SentiWordNet Wörterbuches zu.
 
 \subsubsection{SenticNet}
-SenticNet ist eine weitere lexikalische Resource welche im Opinion Mining verwendet werden kann. Das SenticNet kann unter \url{http://sentic.net/downloads/} heruntergeladen werden. Das Wörterbuch ist in diesem Falle als XML abgespeichert. Ein Wort-Eintrag enthält neben dem Wort selbst vor allem vier Werte für pleasentness, attention, sensitivity und aptitude. Aus diesen Werten lässt sich mit folgender Formel die allgemeine Polarität (positiv oder negativ) berechnen:\cite{senticnet}
+SenticNet ist eine weitere lexikalische Ressource, welche im Opinion Mining verwendet werden kann. Das SenticNet kann unter \url{http://sentic.net/downloads/} heruntergeladen werden. Das Wörterbuch ist in diesem Falle als XML abgespeichert. Ein Wort-Eintrag enthält neben dem Wort selbst vor allem vier Werte für pleasentness, attention, sensitivity und aptitude. Aus diesen Werten lässt sich mit folgender Formel die allgemeine Polarität (positiv oder negativ) berechnen:\cite{senticnet}
 
 \begin{equation}
 	p = \sum_{i=1}^{N} \frac{Plsnt(c_i)+|Attnt(c_i)|-|Snst(c_i)|+Aptit(c_i)}{3N}
@@ -100,7 +100,7 @@ Bei der Recherche zu dieser Arbeit bin ich über einen Artikel von Jacob Perkins
 
 \subsection{Twitter Search API}
 \label{subsec:grundlagentwitter}
-Das Twitter Search API\cite{twitterapi} ist ein REST API welches es erlaubt Tweets zu bestimmten Themen zu suchen. Christian Koepp hat eine Python Anbindung an dieses API implementiert\cite{twittersearch}. Mithilfe dieser Anbindung lässt sich in wenigen Zeilen (Siehe Listing \ref{lst:twitterSearch}) eine Twitter Anbindung realisieren.
+Das Twitter Search API\cite{twitterapi} ist ein REST API welches es erlaubt Tweets zu bestimmten Themen zu suchen. Christian Koepp hat eine Python Anbindung an dieses API implementiert\cite{twittersearch}. Mithilfe dieser Anbindung lässt sich in wenigen Zeilen (Siehe Listing \ref{lst:twitterSearch}) eine Python - Twitter Anbindung realisieren.
 
 \begin{lstlisting}[language=Python, caption={TwitterSearch Python-Twitter Anbindung}, label={lst:twitterSearch}]
 from TwitterSearch import *
