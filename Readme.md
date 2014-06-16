@@ -8,6 +8,7 @@ Diese Seminararbeit beschäftigt sich mit verschiedenen Algorithmen zur Erkennun
 3. pip install TwitterSearch
 4. pip install sasa
 5. pip install mpi4py
+6. pip isntall matplotlib
 
 ##Verwendung:
 1. Dateien herunterladen: git clone git@github.com:aschi/tweetEmotions.git
