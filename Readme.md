@@ -1,6 +1,6 @@
-Semesterarbeit: Erkennen von Emotionen in Tweets
+Seminararbeit: Erkennen von Emotionen in Tweets
 ==================================================================================
-Diese Semesterarbeit beschäftigt sich mit verschiedenen Algorithmen zur Erkennung von Emotionen in Tweets und deren Parallelisierung.
+Diese Seminararbeit beschäftigt sich mit verschiedenen Algorithmen zur Erkennung von Emotionen in Tweets und deren Parallelisierung.
 
 ##Vorbereitungen:
 1. Python pip installieren
