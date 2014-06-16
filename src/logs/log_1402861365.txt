@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 3
+Opening config file: config/config.txt
+Config read (title: ISIS; filename: data/isis_iraq_raw_search_1402763206.23.txt) [0.000143051147461s]
+Opening twitter logfile: data/isis_iraq_raw_search_1402763206.23.txt
+twitter log file read (17947 tweets) [0.0149519443512s]
+initializing classifiers...
+classifiers initialised... [14.061207056s]
+analyzing data...
+analyzing finished... [10.7755308151s]
+combining & refining results...
+emoticonTotal: positive: 35, negative: 63, neutral: 10, unsure: 17839
+sasaTotal: positive: 7317, negative: 892, neutral: 7686, unsure: 2052
+sasaAvg: 0.262784046893
+senticnetTotal: positive: 12162, negative: 5495, neutral: 229, unsure: 61
+senticnetAverage: pleasantness: -0.0113768206682, attention:0.0918861034123, sensitivity:-0.0769614306607, aptitude: 0.0634658673147, polarity: 0.0219979608035
+nltkTotal: positive: 13700, negative: 4247, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 7950, negative: 9069, neutral: 924, unsure: 4
+sentiWordNetAverage: -0.00275264838425
+done [3.45098590851s]
+total time used: 28.5112838745s

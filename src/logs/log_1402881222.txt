@@ -1,0 +1,20 @@
+MPI.COMM_WORLD.Get_size(): 4
+Opening config file: config/config.txt
+Config read (title: schweiz ecuador; filename: data/switzerland_ecuador_raw_search_1402858224.12.txt) [0.0001380443573s]
+Opening twitter logfile: data/switzerland_ecuador_raw_search_1402858224.12.txt
+twitter log file read (17953 tweets) [0.0127999782562s]
+initializing classifiers...
+classifiers initialised... [19.2864530087s]
+analyzing data...
+analyzing finished... [7.41936612129s]
+combining & refining results...
+emoticonTotal: positive: 177, negative: 62, neutral: 69, unsure: 17645
+sasaTotal: positive: 4659, negative: 381, neutral: 2640, unsure: 10273
+sasaAvg: 0.157667762753
+senticnetTotal: positive: 14878, negative: 1010, neutral: 44, unsure: 2021
+senticnetAverage: pleasantness: 0.0588989723921, attention:0.126540018706, sensitivity:-0.0350297626137, aptitude: 0.1618361691, polarity: 0.107784494725
+nltkTotal: positive: 10626, negative: 7327, neutral: 0, unsure: 0
+sentiWordNetTotal: positive: 9716, negative: 5879, neutral: 2358, unsure: 0
+sentiWordNetAverage: 0.0078536431534
+done [3.68658590317s]
+total time used: 30.9852130413s
