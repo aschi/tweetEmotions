@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.3.4)  16 JUN 2014 14:52
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2014.3.4)  16 JUN 2014 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,10 +823,10 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
  [1
 
 ]
-(./content/01_einleitung/einleitung.tex)
-(./content/02_grundlagen/grundlagen.tex [2
+(./content/01_einleitung/einleitung.tex [2
 
-] [3] [4
+])
+(./content/02_grundlagen/grundlagen.tex [3] [4
 
 ]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -863,7 +863,7 @@ Overfull \hbox (104.33743pt too wide) in paragraph at lines 12--13
 ]
  []
 
-<images/benutzerfuehrung.png, id=248, 1010.77625pt x 173.64874pt>
+<images/benutzerfuehrung.png, id=249, 1010.77625pt x 173.64874pt>
 File: images/benutzerfuehrung.png Graphic file (type png)
 
 <use images/benutzerfuehrung.png>
@@ -883,7 +883,7 @@ Overfull \hbox (14.80417pt too wide) in paragraph at lines 199--213
  []
 
 ) (./content/04_analyse/analyse.tex [16] [17]
-<images/schweizvsirak_emoticon.pdf, id=384, 1156.32pt x 433.62pt>
+<images/schweizvsirak_emoticon.pdf, id=386, 1156.32pt x 433.62pt>
 File: images/schweizvsirak_emoticon.pdf Graphic file (type pdf)
 
 <use images/schweizvsirak_emoticon.pdf>
@@ -891,7 +891,7 @@ Package pdftex.def Info: images/schweizvsirak_emoticon.pdf used on input line 8
 .
 (pdftex.def)             Requested size: 358.50612pt x 134.43404pt.
 
-<images/schweizvsirak_nltk.pdf, id=387, 1156.32pt x 433.62pt>
+<images/schweizvsirak_nltk.pdf, id=389, 1156.32pt x 433.62pt>
 File: images/schweizvsirak_nltk.pdf Graphic file (type pdf)
 
 <use images/schweizvsirak_nltk.pdf>
@@ -900,14 +900,14 @@ Package pdftex.def Info: images/schweizvsirak_nltk.pdf used on input line 19.
  [18
 
  <./images/schweizvsirak_emoticon.pdf>]
-<images/schweizvsirak_sasa.pdf, id=461, 1156.32pt x 433.62pt>
+<images/schweizvsirak_sasa.pdf, id=462, 1156.32pt x 433.62pt>
 File: images/schweizvsirak_sasa.pdf Graphic file (type pdf)
 
 <use images/schweizvsirak_sasa.pdf>
 Package pdftex.def Info: images/schweizvsirak_sasa.pdf used on input line 26.
 (pdftex.def)             Requested size: 358.50612pt x 134.43404pt.
 
-<images/schweizvsirak_senticnet.pdf, id=462, 1156.32pt x 433.62pt>
+<images/schweizvsirak_senticnet.pdf, id=463, 1156.32pt x 433.62pt>
 File: images/schweizvsirak_senticnet.pdf Graphic file (type pdf)
 
 <use images/schweizvsirak_senticnet.pdf>
@@ -922,7 +922,7 @@ pdfTeX warning: pdflatex (file ./images/schweizvsirak_sasa.pdf): PDF inclusion:
 
 pdfTeX warning: pdflatex (file ./images/schweizvsirak_senticnet.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] <images/schweizvsirak_sentiwordnet.pdf, id=654, 1156.32pt x 433.62pt>
+>] <images/schweizvsirak_sentiwordnet.pdf, id=655, 1156.32pt x 433.62pt>
 File: images/schweizvsirak_sentiwordnet.pdf Graphic file (type pdf)
 
 <use images/schweizvsirak_sentiwordnet.pdf>
@@ -930,7 +930,7 @@ Package pdftex.def Info: images/schweizvsirak_sentiwordnet.pdf used on input li
 ne 44.
 (pdftex.def)             Requested size: 358.50612pt x 134.43404pt.
  [20 <./images/schweizvsirak_sentiwordnet.pdf>] <images/parallelisierung_chart.
-png, id=720, 1104.125pt x 594.22pt>
+png, id=721, 1104.125pt x 594.22pt>
 File: images/parallelisierung_chart.png Graphic file (type png)
 
 <use images/parallelisierung_chart.png>
@@ -1007,10 +1007,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
  ) 
 Here is how much of TeX's memory you used:
- 13360 strings out of 495007
- 192441 string characters out of 3179691
- 871532 words of memory out of 3000000
- 16093 multiletter control sequences out of 15000+200000
+ 13362 strings out of 495007
+ 192464 string characters out of 3179691
+ 871570 words of memory out of 3000000
+ 16094 multiletter control sequences out of 15000+200000
  21809 words of font info for 60 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  45i,16n,69p,1433b,1650s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1034,10 +1034,10 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on seminararbeit.pdf (25 pages, 589051 bytes).
+Output written on seminararbeit.pdf (25 pages, 590064 bytes).
 PDF statistics:
- 1377 PDF objects out of 1440 (max. 8388607)
- 728 compressed objects within 8 object streams
- 212 named destinations out of 1000 (max. 500000)
+ 1380 PDF objects out of 1440 (max. 8388607)
+ 731 compressed objects within 8 object streams
+ 213 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
