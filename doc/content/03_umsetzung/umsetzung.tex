@@ -9,7 +9,8 @@ Die Applikation wurde so als Konsolenapplikation angelegt, dass alle Module auch
 	\begin{enumerate}
 		\item Wenn der Benutzer neue Twitterdaten laden möchte wird er nach Schlüsselwörtern gefragt
 		\item Dem Benutzer werden die eingegebenen Schlüsselwörter nochmals angezeigt und er muss bestätigen damit das API angestossen wird
-		\item Die Daten werden heruntergeladen und im File \lstinline$keyword1_keyword2_...keywordn_raw_search_timestamp.txt$ abgelegt. Der Filepfad wird zurückgegeben.
+		\item Die Daten werden heruntergeladen und im File \\
+		\lstinline$keyword[1]_keyword[2]_...keyword[n]_raw_search_timestamp.txt$ abgelegt. Der Filepfad wird zurückgegeben.
 	\end{enumerate}
 	\item Wenn der Benutzer vorhandene Twitterdaten analysieren möchte, muss er den Pfad zum Twitterdatenfile angeben
 	\item Der Benutzer bestätigt, dass er die Twitter Datenanalyse für die gegebenen Tweets starten möchte
@@ -20,7 +21,7 @@ Live sieht dies wie in Abbildung \ref{fig:benutzerfuehrung} aus.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/benutzerfuehrung.png}
+  \includegraphics[width=\textwidth]{images/benutzerfuehrung.png}
   \caption[Benutzerführung]{Benutzerführung}
   \label{fig:benutzerfuehrung}
 \end{figure}
@@ -130,7 +131,7 @@ Der SentiWordNet Algorithmus wurde als Python Klasse implementiert. Im Konstrukt
 	\item Wenn die Zeile nicht aus 6 Elementen besteht, wird eine Fehlermeldung ausgegeben.
 	\item Der Synset-Score der Zeile wird berechnet ($positiveScore - negativeScore$).
 	\item Das Synset wird aufgesplittet und jedes Wort des Synsets wird zusammen mit dem Rank in ein temporäres \lstinline$Dictionary$ geschrieben (\lstinline$tmpDict[wort][rank] = synSetScore$).
-	\item Der SentiNetScore für jedes Wort entspricht dem gewichteten Durchschnitt der SentiScores aller Vorkommnisse dieses Wortes und wird wie folgt berechnet: $\frac{\frac{1}{2}\cdot Rank_1 + \frac{1}{3} \cdot Rank_2 + ... + \frac{1}{n} \cdot Rank_n}{1+\frac{1}{2}+\frac{1}{3}+...+\frac{1}{n}}$.
+	\item Der SentiNetScore für jedes Wort entspricht dem gewichteten Durchschnitt der Synset-Scores aller Vorkommnisse dieses Wortes und wird wie folgt berechnet: \\ $\frac{\frac{1}{2}\cdot Rank_1 + \frac{1}{3} \cdot Rank_2 + ... + \frac{1}{n} \cdot Rank_n}{1+\frac{1}{2}+\frac{1}{3}+...+\frac{1}{n}}$.
 	\item Im finalen \lstinline$Dictionary$ werden jeweils das Wort und der entsprechende SentiNetScore abgelegt.
 \end{enumerate}
 
