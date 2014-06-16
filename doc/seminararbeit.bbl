@@ -8,6 +8,11 @@ Emoticons - show your friends how you really feel.
 Get search/tweets.
 \newblock \url{https://dev.twitter.com/docs/api/1.1/get/search/tweets}.
 
+\bibitem{isis}
+Islamic state in iraq and the levant.
+\newblock
+  \url{http://en.wikipedia.org/wiki/Islamic_State_in_Iraq_and_the_Levant}.
+
 \bibitem{emoticons3}
 List of text emoticons – the ultimate resource.
 \newblock \url{http://cool-smileys.com/text-emoticons}.
@@ -32,6 +37,10 @@ The streaming apis.
 What is the full list of emoticons?
 \newblock
   \url{https://support.skype.com/en/faq/FA12330/what-is-the-full-list-of-emoticons}.
+
+\bibitem{wordnet}
+Wordnet - a lexical database for english.
+\newblock \url{http://wordnet.princeton.edu/}.
 
 \bibitem{senticnet}
 Erik Cambria, Catherine Havasi, and Amir Hussain.
@@ -68,5 +77,10 @@ Jacob Perkins.
 \newblock Text classification for sentiment analysis - naive bayes classifier.
 \newblock
   \url{http://streamhacker.com/2010/05/10/text-classification-sentiment-analysis-naive-bayes-classifier/}.
+
+\bibitem{sentiwordnetjava}
+Petter Törnberg.
+\newblock Sentiwordnetdemocode.
+\newblock \url{http://sentiwordnet.isti.cnr.it/code/SentiWordNetDemoCode.java}.
 
 \end{thebibliography}

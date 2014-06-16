@@ -2,17 +2,14 @@ import re
 import nltk.classify.util
 from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import movie_reviews
+from preprocessing import preprocessTweet
  
 class NLTKTweetClassifier:
 	def word_feats(self, words):
 	    return dict([(word, True) for word in words])
 
 	def classifyTweet(self, tweet):
-		tweet = re.sub('[^\w ]',' ',tweet) #remove punctuation
-		tweet = re.sub(' +',' ', tweet) #remove double spaces
-		tweet = tweet.lower()
-		words = tweet.split(" ")
-
+		words = preprocessTweet(tweet)
 		return self.classifier.classify(self.word_feats(words))
 
 	def __init__(self):

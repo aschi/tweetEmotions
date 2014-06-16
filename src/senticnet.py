@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import re
 import numpy as np
 import matplotlib.pyplot as plt
+from preprocessing import preprocessTweet, getWordCombinations
 from autolabel import autolabel
 
 class SenticScore:
@@ -69,13 +70,11 @@ class SenticScore:
 
 class SenticNet:
 	def getTweetSenticScore(self, tweet):
-		tweet = re.sub('[^\w ]',' ',tweet) #remove punctuation
-		tweet = re.sub(' +',' ', tweet) #remove double spaces
-		tweet = tweet.lower()
-		words = tweet.split(" ")
-		wordcombos = self.getWordCombinations(words, " ")
+		words = preprocessTweet(tweet)
+		wordcombos = getWordCombinations(words, " ")
 		total = SenticScore(0.0, 0.0, 0.0, 0.0, 0.0)
 		count = 0
+
 		for w in wordcombos:
 			obj = self.getWordSenticScore(w)
 			if obj != None:
@@ -86,20 +85,6 @@ class SenticNet:
 			return total
 		else:
 			return None
-
-	def getWordCombinations(self, wordList, seperator):
-		comboList = []
-		for i in range(len(wordList)):
-			wordcombo = ""
-			for n in range(i, len(wordList)):
-				if(wordcombo == ""):
-					wordcombo = wordList[n]
-				else:
-					wordcombo = wordcombo + seperator +wordList[n]
-				comboList.append(wordcombo)
-		return comboList
-
-
 
 	def getWordSenticScore(self, word):
 		if word in self.dictionary:

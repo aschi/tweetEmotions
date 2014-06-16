@@ -3,14 +3,12 @@
 
 import os
 import re
+from preprocessing import preprocessTweet, getWordCombinations
 
 class SentiWordNet:
 	def getTweetScore(self, tweet):
-		tweet = re.sub('[^\w ]',' ',tweet) #remove punctuation
-		tweet = re.sub(' +',' ', tweet) #remove double spaces
-		tweet = tweet.lower()
-		words = tweet.split(" ")
-		wordcombos = self.getWordCombinations(words, "_")
+		words = preprocessTweet(tweet)
+		wordcombos = getWordCombinations(words, "_")
 		total = 0.0
 		count = 0
 		for w in wordcombos:
@@ -32,18 +30,6 @@ class SentiWordNet:
 			return self.dictionary[word]
 		else:
 			return None
-
-	def getWordCombinations(self, wordList, seperator):
-		comboList = []
-		for i in range(len(wordList)):
-			wordcombo = ""
-			for n in range(i, len(wordList)):
-				if(wordcombo == ""):
-					wordcombo = wordList[n]
-				else:
-					wordcombo = wordcombo + seperator +wordList[n]
-				comboList.append(wordcombo)
-		return comboList
 
 	def __init__(self, pathToSWN):
 		self.dictionary = dict()
